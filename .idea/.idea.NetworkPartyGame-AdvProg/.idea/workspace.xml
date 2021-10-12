@@ -18,6 +18,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PlayerController.cs" />
@@ -67,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633410247219</updated>
       <workItem from="1633410389273" duration="1649000" />
+      <workItem from="1634008432307" duration="4983000" />
     </task>
     <servers />
   </component>
