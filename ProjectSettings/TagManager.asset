@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bumper
   - Kickzone
+  - Ball
   layers:
   - Default
   - TransparentFX
