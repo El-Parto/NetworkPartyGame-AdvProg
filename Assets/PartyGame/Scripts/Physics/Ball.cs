@@ -64,10 +64,10 @@ namespace NetworkPartyGame.Physics
                 ball.transform.forward = Vector3.Reflect(ball.transform.forward, hit.normal);
             }
 
-            if(collision.collider.CompareTag("Bumper") && speed <= 19.99f) // if ball speed is below 20
+            if(collision.collider.CompareTag("Bumper") && speed <= 19.9f) // if ball speed is below 20
                 speed *= 1.35f; // can multiply it's speed byy a fair amount
             if(collision.collider.CompareTag("Bumper") && speed >= 20) // if ball speed is above or equal  to 20, multiply by small margin instead
-                speed *= 1.01f;
+                speed *= 1.00f;
 
 
             // When the ball collides with a bumper (might change this later to cover all collisions)
