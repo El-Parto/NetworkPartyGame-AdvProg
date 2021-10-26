@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NetworkPartyGame.Physics
 {
-    public class Bumper : MonoBehaviour
+    public class BumperGenerator : MonoBehaviour
     {
         //[SerializeField] private Ball ball;
         public bool canKick;
