@@ -6,13 +6,26 @@ using UnityEngine.UI;
 
 namespace Game.Scripts
 {
+    /// <summary>
+    /// handles the network connection menu, attached to the ui panel tab body for connection menu
+    /// </summary>
     public class ConnectionMenu : MonoBehaviour
     {
+        /// <summary>
+        /// stores the list of discovered server, populated by the
+        /// </summary>
         readonly Dictionary<long, ServerResponse> discoveredServers = new Dictionary<long, ServerResponse>();
         public MyNetworkDiscovery networkDiscovery;
+        [Tooltip("drag the disabled button template ip inside the scrollview, as a template for new connection buttons")]
         [Space] [SerializeField] private Button buttonTemplateIP;
+        /// <summary>
+        /// stores the list of buttons so we can clear it later on refresh
+        /// </summary>
         private Dictionary<long, Button> buttonIPs = new Dictionary<long, Button>();
 #if UNITY_EDITOR
+        /// <summary>
+        /// called only in unity editor scene, not in runtime
+        /// </summary>
         void OnValidate()
         {
             if (networkDiscovery == null)
@@ -24,6 +37,9 @@ namespace Game.Scripts
             }
         }
 #endif
+        /// <summary>
+        /// when the start host button is clicked in the menu
+        /// </summary>
         public void ButtonStartHost()
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
@@ -32,6 +48,9 @@ namespace Game.Scripts
             networkDiscovery.AdvertiseServer();
         }
         
+        /// <summary>
+        /// when the start server button is clicked in the menu
+        /// </summary>
         public void ButtonStartServer()
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
@@ -40,6 +59,9 @@ namespace Game.Scripts
             networkDiscovery.AdvertiseServer();
         }
         
+        /// <summary>
+        /// when the stop host button is clicked in the menu
+        /// </summary>
         public void ButtonStopServer()
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
@@ -47,6 +69,9 @@ namespace Game.Scripts
             NetworkManager.singleton.StopHost();
         }
         
+        /// <summary>
+        /// when the logoff button is clicked in the menu
+        /// </summary>
         public void ButtonStopClient()
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
@@ -55,6 +80,9 @@ namespace Game.Scripts
             NetworkManager.singleton.OnStartServer();
         }
         
+        /// <summary>
+        /// when the discover server button is clicked in the menu, also called at the start when this menu is displayed
+        /// </summary>
         public void ButtonDiscoverServers()
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");

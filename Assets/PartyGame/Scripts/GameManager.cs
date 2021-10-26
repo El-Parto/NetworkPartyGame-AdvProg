@@ -5,6 +5,7 @@ namespace Game.Scripts
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        #region for c# events
         private void OnEnable()
         {
             RegisterListeners();
@@ -30,7 +31,8 @@ namespace Game.Scripts
         {
             // EventManager.Instance.OnTimerDone -= GameOver;
         }
-
+        #endregion
+        
         /// <summary>
         /// what happens when the gameover event occurs
         /// </summary>

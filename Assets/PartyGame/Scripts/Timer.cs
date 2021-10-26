@@ -88,6 +88,9 @@ namespace Game.Scripts
             CountDown();
         }
 
+        /// <summary>
+        /// the timer count down, fires an event at every tick interval in seconds, and when the timer is done
+        /// </summary>
         public void CountDown()
         {
             //check and stop if timer is already over at the beginning
@@ -109,6 +112,10 @@ namespace Game.Scripts
                 onTimerDone.Invoke();
             } 
         }
+        
+        /// <summary>
+        /// resets and starts the timer from the beginning.
+        /// </summary>
         public void Restart()
         {
             timeLeft = startingTime;
