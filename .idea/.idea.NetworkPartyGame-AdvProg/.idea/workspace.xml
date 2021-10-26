@@ -20,6 +20,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TeddyToolKit/Test/Core/AttributeTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/BumperMechanic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -80,7 +81,7 @@
       <workItem from="1633410389273" duration="1649000" />
       <workItem from="1634008432307" duration="6229000" />
       <workItem from="1634613212664" duration="6460000" />
-      <workItem from="1635201759592" duration="8083000" />
+      <workItem from="1635201759592" duration="8683000" />
     </task>
     <servers />
   </component>
