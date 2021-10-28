@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NetworkPartyGame.Physics
 {
-    public class BumperGenerator : MonoBehaviour
+    public class Bumper : MonoBehaviour
     {
         //[SerializeField] private Ball ball;
         public bool canKick;
@@ -36,14 +36,10 @@ namespace NetworkPartyGame.Physics
 
 
 
-        public void VisualiseKick()
-        {
-            // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
-            if(canKick)
-            {
-                Instantiate(kickVisPrefab, gameObject.transform); // instantiates the visualiser prefab
-                canKick = false; // another setter for the can kick flag
-            }
+        private void VisualiseKick()
+        { 
+            Instantiate(kickVisPrefab, gameObject.transform); // instantiates the visualiser prefab
+            canKick = false; // another setter for the can kick flag
 
         }
 
