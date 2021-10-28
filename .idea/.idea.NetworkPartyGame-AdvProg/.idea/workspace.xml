@@ -20,6 +20,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TeddyToolKit/Test/Core/AttributeTest.cs" root0="SKIP_HIGHLIGHTING" />
@@ -86,7 +87,7 @@
       <workItem from="1634008432307" duration="6229000" />
       <workItem from="1634613212664" duration="6460000" />
       <workItem from="1635201759592" duration="13829000" />
-      <workItem from="1635395804315" duration="4034000" />
+      <workItem from="1635395804315" duration="5018000" />
     </task>
     <servers />
   </component>
