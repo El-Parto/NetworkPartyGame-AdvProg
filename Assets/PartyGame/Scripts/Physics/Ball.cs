@@ -58,6 +58,7 @@ namespace NetworkPartyGame.Physics
         private void OnCollisionEnter(Collision collision)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             // Casts a ray in front of the ball towards the object it hits
             if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
             {
@@ -71,6 +72,8 @@ namespace NetworkPartyGame.Physics
                 speed *= 1.00f;
 
 
+=======
+>>>>>>> parent of 3febe14 (Bouncing off all objects)
 =======
 >>>>>>> parent of 3febe14 (Bouncing off all objects)
             // When the ball collides with a bumper (might change this later to cover all collisions)
