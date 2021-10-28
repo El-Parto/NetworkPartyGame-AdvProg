@@ -11,7 +11,8 @@ namespace NetworkPartyGame.Physics
         public bool canKick;
 
         [SerializeField] private GameObject kickVisPrefab; // the kick mechanic's visualiser.
-        
+
+        private GameObject ball;
         void Start()
         {
             //ball = FindObjectOfType<Ball>();
@@ -21,17 +22,11 @@ namespace NetworkPartyGame.Physics
         // Update is called once per frame
         private void Update()
         {
-
-            
-
-
-
             if(Input.GetKeyDown(KeyCode.Space) && canKick)
             {
                 VisualiseKick();
-               // KickBall();
+                KickBall();
             }
-            
         }
 
 
@@ -48,9 +43,10 @@ namespace NetworkPartyGame.Physics
             // If the Kickzone finds a ball
             if (collider.gameObject.tag == "Ball")
             {
-                Debug.Log("DING DING DING");
+                Debug.Log("Ball Enter");
                 // set cankick to true
                 canKick = true;
+                ball = collider.gameObject;
             }
         }
         private void OnTriggerExit(Collider collider)
@@ -58,22 +54,21 @@ namespace NetworkPartyGame.Physics
             // if the ball exits the kickzone
             if (collider.gameObject.tag == "Ball")
             {
-                Debug.Log("BING BING BING");
+                Debug.Log("Ball Exit");
                 // set cankick to false
                 canKick = false;
+                ball = null;
             }
         }
-/*
+
         private void KickBall()
         {
-            
-        
             // NOTE: THIS WOULD NOT WORK IN FIXED UPDATE
             //ball.transform.position += ball.transform.forward * speed * Time.deltaTime;
 
             Debug.Log("should be working");
             // double the speed (might need to fix this later so things don't get TOO fast)
-            ball.speed *= 2;
+            ball.GetComponent<Ball>().speed *= 2;
             // Casts a ray in front of the ball towards the object it hits
             // If you can kick and you hit the space key
             if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
@@ -83,10 +78,7 @@ namespace NetworkPartyGame.Physics
             }
             // Sets cankick to false so you can't mash space to get infinite speed
             canKick = false;
-           
         }
-
-    
-*/  }  
+    }  
 
 }

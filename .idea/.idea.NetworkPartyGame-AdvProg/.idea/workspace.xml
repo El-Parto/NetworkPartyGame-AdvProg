@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/KickVisualiser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/KickVisualiser.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/PhysicsTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/PhysicsTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +30,10 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -79,6 +91,7 @@
       <workItem from="1634008432307" duration="6229000" />
       <workItem from="1634613212664" duration="5778000" />
       <workItem from="1635209306517" duration="898000" />
+      <workItem from="1635406344607" duration="7358000" />
     </task>
     <servers />
   </component>
@@ -88,6 +101,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
