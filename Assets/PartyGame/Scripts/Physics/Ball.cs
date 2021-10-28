@@ -57,6 +57,7 @@ namespace NetworkPartyGame.Physics
 
         private void OnCollisionEnter(Collision collision)
         {
+<<<<<<< HEAD
             // Casts a ray in front of the ball towards the object it hits
             if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
             {
@@ -70,12 +71,19 @@ namespace NetworkPartyGame.Physics
                 speed *= 1.00f;
 
 
+=======
+>>>>>>> parent of 3febe14 (Bouncing off all objects)
             // When the ball collides with a bumper (might change this later to cover all collisions)
-            /*if (collision.gameObject.tag == "Bumper")
+            if (collision.gameObject.tag == "Bumper")
             {
-                
+                // Casts a ray in front of the ball towards the object it hits
+                if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
+                {
+                    // Reflects the ball to go the other way
+                    ball.transform.forward = Vector3.Reflect(ball.transform.forward, hit.normal);
+                }
                 // ball.transform.rotation = Quaternion.Euler(0, (180 - ball.transform.rotation.y), 0);
-            }*/
+            }
         }
 
         private void OnTriggerEnter(Collider collider)
@@ -83,6 +91,7 @@ namespace NetworkPartyGame.Physics
             // If the ball enters a kickzone
             if (collider.gameObject.tag == "Kickzone")
             {
+                Debug.Log("DING DING DING");
                 // set cankick to true
                 canKick = true;
             }
@@ -92,6 +101,7 @@ namespace NetworkPartyGame.Physics
             // if the ball exits the kickzone
             if (collider.gameObject.tag == "Kickzone")
             {
+                Debug.Log("BING BING BING");
                 // set cankick to false
                 canKick = false;
             }
