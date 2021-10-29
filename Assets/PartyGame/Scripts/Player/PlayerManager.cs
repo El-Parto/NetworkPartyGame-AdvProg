@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
 
@@ -14,8 +15,11 @@ public class PlayerMove : MonoBehaviour
     // How far the player is allowed to move
     public float movementBounds = 8;
     // How far the player has moved from the start point
-    public float movementDistance;
-    
+    [SerializeField] private float movementDistance;
+    // The player's score (I think it has to be public because other scripts are accessing it)
+    public int playerScore;
+    // The player's health
+    public int playerHealth;
     
     // Start is called before the first frame update
     void Start()

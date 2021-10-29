@@ -19,30 +19,20 @@ namespace NetworkPartyGame.Physics
         // The spot where the balls spawn
         public GameObject ballSpawnPosition;
         // The game manager
-        public GameManager GameManager;
-        
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
+        public GameManager gameManager;
+        // The last player to hit the ball
+        public GameObject lastHitPlayer;
 
         private void Awake()
         {
             // Todo: Find a way to spawn the ball that doesn't suck
             ballSpawnPosition = GameObject.Find("Ball Spawn Position");
             // Doing this is probably BAD
-            GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             // Makes sure it's at the ball transform position when spawned
             transform.position = ballSpawnPosition.transform.position;
             // Picks a random starting direction
             ball.transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -71,25 +61,37 @@ namespace NetworkPartyGame.Physics
         private void OnTriggerEnter(Collider collider)
         {
             // If the ball enters a kickzone
-            if (collider.gameObject.tag == "Kickzone")
+            if (collider.gameObject.CompareTag("Kickzone"))
             {
                 // set cankick to true
                 canKick = true;
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
             }
             // If the ball enters a scorezone
-            if (collider.gameObject.tag == "Scorezone")
+            if (collider.gameObject.CompareTag("Scorezone"))
             {
+                if (lastHitPlayer != null)
+                {
+                    // Increases the score of the last player who hit the ball
+                    lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+                }
+                // Deducts health from the player scored against
+                collider.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
                 // Spawn a new ball and destroy this one
-                // THIS IS ALSO WHERE SCORING WOULD GO
-                // todo: Make the ball store which player last hit it, and which player was scored against
-                GameManager.SpawnBall();
+                gameManager.SpawnBall();
                 Destroy(this.gameObject);
+            }
+            if (collider.gameObject.CompareTag("Bumper"))
+            {
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
             }
         }
         private void OnTriggerExit(Collider collider)
         {
             // if the ball exits the kickzone
-            if (collider.gameObject.tag == "Kickzone")
+            if (collider.gameObject.CompareTag("Kickzone"))
             {
                 // set cankick to false
                 canKick = false;

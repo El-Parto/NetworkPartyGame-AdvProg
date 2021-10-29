@@ -13,6 +13,9 @@ namespace NetworkPartyGame.Physics
         [SerializeField] private GameObject kickVisPrefab; // the kick mechanic's visualiser.
 
         private GameObject ball;
+
+        public GameObject attachedPlayer;
+        
         void Start()
         {
             //ball = FindObjectOfType<Ball>();
@@ -41,7 +44,7 @@ namespace NetworkPartyGame.Physics
         private void OnTriggerEnter(Collider collider)
         {
             // If the Kickzone finds a ball
-            if (collider.gameObject.tag == "Ball")
+            if (collider.gameObject.CompareTag("Ball"))
             {
                 Debug.Log("Ball Enter");
                 // set cankick to true
@@ -52,7 +55,7 @@ namespace NetworkPartyGame.Physics
         private void OnTriggerExit(Collider collider)
         {
             // if the ball exits the kickzone
-            if (collider.gameObject.tag == "Ball")
+            if (collider.gameObject.CompareTag("Ball"))
             {
                 Debug.Log("Ball Exit");
                 // set cankick to false
