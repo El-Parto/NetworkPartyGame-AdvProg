@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/PartyGame/Scenes/UIscene.unity
     guid: 0b7e9990e4da4f448bcb98a08770238a
   - enabled: 1

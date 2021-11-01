@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
-    public class BumperGenerator : MonoBehaviour
+    public class BumperGenerator : NetworkBehaviour
     {
         //[SerializeField] private Ball ball;
         public bool canKick;
@@ -36,6 +37,7 @@ namespace NetworkPartyGame.Physics
 
 
 
+        
         public void VisualiseKick()
         {
             // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
@@ -45,6 +47,14 @@ namespace NetworkPartyGame.Physics
                 canKick = false; // another setter for the can kick flag
             }
 
+        }
+
+        [ClientRpc]
+        public void RpcVisualiseKick(Transform spawnPos)
+        {
+            // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
+          GameObject obj = Instantiate(kickVisPrefab, spawnPos); // instantiates the visualiser prefab
+          NetworkServer.Spawn(kickVisPrefab);
         }
 
         private void OnTriggerEnter(Collider collider)
