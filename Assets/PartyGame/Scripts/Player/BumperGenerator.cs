@@ -6,16 +6,17 @@ using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
-    public class BumperGenerator : NetworkBehaviour
+    public class BumperGenerator : MonoBehaviour
     {
         //[SerializeField] private Ball ball;
         public bool canKick;
 
         [SerializeField] private GameObject kickVisPrefab; // the kick mechanic's visualiser.
-        
+        [SerializeField] private Transform playerTran;
         void Start()
         {
             //ball = FindObjectOfType<Ball>();
+            playerTran = gameObject.transform;
         }
 
         
@@ -29,7 +30,7 @@ namespace NetworkPartyGame.Physics
 
             if(Input.GetKeyDown(KeyCode.Space) && canKick)
             {
-                VisualiseKick();
+                VisualiseKick(playerTran);
                // KickBall();
             }
             
@@ -38,24 +39,18 @@ namespace NetworkPartyGame.Physics
 
 
         
-        public void VisualiseKick()
+        public void VisualiseKick(Transform _spawnPos)
         {
             // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
             if(canKick)
             {
-                Instantiate(kickVisPrefab, gameObject.transform); // instantiates the visualiser prefab
+                Instantiate(kickVisPrefab, _spawnPos); // instantiates the visualiser prefab
                 canKick = false; // another setter for the can kick flag
             }
 
         }
 
-        [ClientRpc]
-        public void RpcVisualiseKick(Transform spawnPos)
-        {
-            // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
-          GameObject obj = Instantiate(kickVisPrefab, spawnPos); // instantiates the visualiser prefab
-          NetworkServer.Spawn(kickVisPrefab);
-        }
+        
 
         private void OnTriggerEnter(Collider collider)
         {
