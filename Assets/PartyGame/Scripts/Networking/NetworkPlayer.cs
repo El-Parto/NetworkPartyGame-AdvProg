@@ -16,9 +16,16 @@ public class NetworkPlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isLocalPlayer)
+        if(!isLocalPlayer)
         {
             return;
         }
     }
+
+    public override void OnStartClient()
+    {
+        PlayerManager player = gameObject.GetComponent<PlayerManager>();
+        ///player.enabled = isLocalPlayer;
+    }
+    
 }

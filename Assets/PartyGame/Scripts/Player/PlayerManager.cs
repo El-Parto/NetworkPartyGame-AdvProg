@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Button moveRight;
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
+    [SerializeField] private GameObject playerChildPrefab;
 
     // How far the player is allowed to move
     public float movementBounds = 8;
@@ -34,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         if(isMovingLeft || Input.GetKey(KeyCode.A))
             if (movementDistance > movementBounds * -1)
             {
-                gameObject.transform.position += (Vector3.left * moveSpeed )* Time.deltaTime;
+                playerChildPrefab.transform.position += (Vector3.left * moveSpeed )* Time.deltaTime;
                 movementDistance -= moveSpeed * Time.deltaTime;
             }
             
@@ -42,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         if(isMovingRight || Input.GetKey(KeyCode.D))
             if (movementDistance < movementBounds)
             {
-                gameObject.transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
+                playerChildPrefab.transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
                 movementDistance += moveSpeed * Time.deltaTime;
             }
             
@@ -56,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     {
         isMovingLeft = false;
         isMovingRight = false;
-        gameObject.transform.position += Vector3.zero;  
+        playerChildPrefab.transform.position += Vector3.zero;  
     } 
     
     public void MoveCharacterLeft()
