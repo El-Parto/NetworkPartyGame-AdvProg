@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Mirror;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        
         if(isMovingLeft || Input.GetKey(KeyCode.A))
             if (movementDistance > movementBounds * -1)
             {

@@ -19,6 +19,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../UnityProjects/S2-2021-Networking-main/S2-2021-Networking-main/Assets/Networking Learning/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
@@ -27,6 +28,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UnityProjects/S2-2021-Networking-main/S2-2021-Networking-main/Assets/Networking Learning/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -39,8 +41,8 @@
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameMangerSingleton.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z4bJ69BwoWJRLyao6XyhH5FIgL" />
