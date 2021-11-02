@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Mirror;
 using Mirror.Discovery;
+using PartyGame.Scripts.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts
+namespace PartyGame.Scripts
 {
     /// <summary>
     /// handles the network connection menu, attached to the ui panel tab body for connection menu
@@ -45,6 +46,8 @@ namespace Game.Scripts
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
             NetworkManager.singleton.StartHost();
+            //if scene has changed to online here, so this line below doesn't get executed and server is not advertised
+            // so we need to advertise also in the custom network manager OnStartHost
             networkDiscovery.AdvertiseServer();
         }
         
@@ -56,6 +59,8 @@ namespace Game.Scripts
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
             NetworkManager.singleton.StartServer();
+            //if scene has changed to online here, so this line below doesn't get executed and server is not advertised
+            // so we need to advertise also in the custom network manager OnStartHost
             networkDiscovery.AdvertiseServer();
         }
         
