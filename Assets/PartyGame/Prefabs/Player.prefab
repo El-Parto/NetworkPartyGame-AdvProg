@@ -271,7 +271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 1364bd118f9602545850e8c9fcd5cbb4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 8947230246613834427}
   - component: {fileID: 4305977879349010505}
   - component: {fileID: 2483045317610076878}
-  - component: {fileID: 8111850296217333877}
+  - component: {fileID: 4975506004755062262}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
---- !u!114 &8111850296217333877
+--- !u!114 &4975506004755062262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -598,3 +598,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canKick: 0
   kickVisPrefab: {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
+  attachedPlayer: {fileID: 0}
