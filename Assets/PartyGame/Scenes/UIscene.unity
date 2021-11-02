@@ -1932,7 +1932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1725728606}
   - component: {fileID: 1725728603}
-  - component: {fileID: 1725728602}
   - component: {fileID: 1725728601}
   - component: {fileID: 1725728600}
   - component: {fileID: 1725728605}
@@ -1998,18 +1997,6 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs: []
---- !u!114 &1725728602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725728599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0884dec8c6a274e9152620b66be466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1725728603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2022,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf9c39fe49d8c945a7d66cf71246ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 0}
+  ballPrefab: {fileID: 7317452690663803401, guid: d6ae5d492ae73ee4b97527d91348bd39, type: 3}
 --- !u!114 &1725728604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,6 +2042,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b9c74b6f630e64989207d4dcb80588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  txtTimer: {fileID: 119173449}
+  txtNetworkStatus: {fileID: 1543305684}
+  tabGroup: {fileID: 2258261000132904074}
+  tabBody:
+  - {fileID: 2258260999957148379}
+  - {fileID: 2258261000915050547}
+  - {fileID: 2258261000354031777}
+  menuGUI: {fileID: 2258261001240828084}
 --- !u!224 &1725728606
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19519,7 +19514,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7372721350257471150}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.5766153
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19955,7 +19950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.014626875}
+  m_AnchoredPosition: {x: 0, y: 0.00040289428}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7372721348865862235
@@ -20225,7 +20220,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7372721350192484731}
   m_HandleRect: {fileID: 7372721350192484708}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
