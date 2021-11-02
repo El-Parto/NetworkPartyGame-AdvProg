@@ -33,7 +33,6 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        
         if(isMovingLeft || Input.GetKey(KeyCode.A))
             if (movementDistance > movementBounds * -1)
             {
