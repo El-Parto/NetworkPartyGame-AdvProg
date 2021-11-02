@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs.meta
 guid: 1c04866f98d54d140a809bf3762f21ce
+=======
+guid: b662d83bfc7884c47a43cfaaceb18adc
+>>>>>>> origin/New-Player:Assets/PartyGame/Scripts/Player/PlayerManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
