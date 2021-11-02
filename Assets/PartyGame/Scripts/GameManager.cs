@@ -1,7 +1,7 @@
 using TeddyToolKit.Core;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace PartyGame.Scripts
 {
     public class GameManager : MonoSingleton<GameManager>
     {
@@ -31,8 +31,18 @@ namespace Game.Scripts
         {
             // EventManager.Instance.OnTimerDone -= GameOver;
         }
-        #endregion
+	#endregion
         
+        //julian added
+	    public GameObject ballPrefab;
+	    /// <summary>
+	    /// julian added
+	    /// </summary>
+        public void SpawnBall()
+	    {
+	        Instantiate(ballPrefab);
+	    }
+
         /// <summary>
         /// what happens when the gameover event occurs
         /// </summary>

@@ -14,6 +14,11 @@
 #basically only track Asset Package ProjectSetting: 3 main folders
 /[Uu]ser[Ss]ettings/
 
+#teddy added according to jetbrains advice
+**/.idea/workspace.xml
+**/.idea/usage.statistics.xml
+**/.idea/shelf
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
