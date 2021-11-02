@@ -11,14 +11,18 @@ GameObject:
   - component: {fileID: 5440702484923777201}
   - component: {fileID: 5440702484923777214}
   - component: {fileID: 5440702484923777215}
+  - component: {fileID: 5440702484923777213}
   - component: {fileID: 6344297275412908644}
   - component: {fileID: 5143823898003832125}
 <<<<<<< HEAD
   - component: {fileID: 4979901641984546252}
+<<<<<<< HEAD
   - component: {fileID: 859109521218322059}
   - component: {fileID: -4820036363792688649}
 =======
 >>>>>>> parent of 4500276 (Host now spawns in)
+=======
+>>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)
   m_Layer: 0
   m_Name: KickVisualiser
   m_TagString: Bumper
@@ -89,6 +93,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5440702484923777213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440702484923777210}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928db22bf709af4479f30417a876b404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6344297275412908644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +148,7 @@ MonoBehaviour:
   visible: 0
   m_AssetId: b1103489deaf8d348b7c9ef59f8440c7
   hasSpawned: 0
+<<<<<<< HEAD
 --- !u!114 &859109521218322059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +194,5 @@ MonoBehaviour:
   syncInterval: 0.1
 =======
 >>>>>>> parent of 4500276 (Host now spawns in)
+=======
+>>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)

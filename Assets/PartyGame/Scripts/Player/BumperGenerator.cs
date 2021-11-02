@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
@@ -38,8 +37,12 @@ namespace NetworkPartyGame.Physics
 
 
 
+<<<<<<< HEAD
         
         public void VisualiseKick(Transform _spawnPos)
+=======
+        public void VisualiseKick()
+>>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)
         {
             // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
             if(canKick)
@@ -50,8 +53,11 @@ namespace NetworkPartyGame.Physics
 
         }
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)
         private void OnTriggerEnter(Collider collider)
         {
             // If the Kickzone finds a ball
