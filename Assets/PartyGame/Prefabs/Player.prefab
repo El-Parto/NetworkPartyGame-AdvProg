@@ -330,9 +330,9 @@ GameObject:
   - component: {fileID: 2704173808737384162}
   - component: {fileID: 1022790631691456385}
   - component: {fileID: 8947230246613834427}
-  - component: {fileID: 4305977879349010505}
   - component: {fileID: 2483045317610076878}
   - component: {fileID: 4975506004755062262}
+  - component: {fileID: 1652525342678904723}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -414,26 +414,6 @@ MonoBehaviour:
     localScale: {x: 0, y: 0, z: 0}
     movementSpeed: 0
   target: {fileID: 2704173808161945018}
---- !u!114 &4305977879349010505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2704173808737384161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b662d83bfc7884c47a43cfaaceb18adc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 7.53
-  moveLeft: {fileID: 0}
-  moveRight: {fileID: 0}
-  playerChildPrefab: {fileID: 2704173808161945013}
-  movementBounds: 8
-  movementDistance: 0
-  playerScore: 0
-  playerHealth: 0
 --- !u!114 &2483045317610076878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +468,26 @@ MonoBehaviour:
     localRotation: {x: 0, y: 0, z: 0, w: 0}
     localScale: {x: 0, y: 0, z: 0}
     movementSpeed: 0
+--- !u!114 &1652525342678904723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704173808737384161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a930ba8b18437b45b51c1fb85e76ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  moveLeft: {fileID: 0}
+  moveRight: {fileID: 0}
+  playerChildPrefab: {fileID: 2704173808161945013}
+  movementBounds: 8
+  movementDistance: 0
+  playerScore: 0
+  playerHealth: 0
 --- !u!1 &2704173808874763431
 GameObject:
   m_ObjectHideFlags: 0

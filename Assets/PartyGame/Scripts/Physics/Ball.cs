@@ -1,3 +1,4 @@
+using PartyGame.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
