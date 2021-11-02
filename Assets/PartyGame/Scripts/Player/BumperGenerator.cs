@@ -12,7 +12,12 @@ namespace NetworkPartyGame.Physics
         public bool canKick;
 
         [SerializeField] private GameObject kickVisPrefab; // the kick mechanic's visualiser.
+<<<<<<< HEAD:Assets/PartyGame/Scripts/Player/BumperGenerator.cs
         [SerializeField] private Transform playerTran;
+=======
+
+        private GameObject ball;
+>>>>>>> parent of 3285688 (Scoring and player health):Assets/PartyGame/Scripts/Player/Bumper.cs
         void Start()
         {
             //ball = FindObjectOfType<Ball>();

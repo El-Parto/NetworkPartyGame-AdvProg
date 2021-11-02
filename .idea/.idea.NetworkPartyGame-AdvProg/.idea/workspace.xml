@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/KickVisualiser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Prefabs/KickVisualiser.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/PhysicsTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/PhysicsTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
+>>>>>>> parent of 3285688 (Scoring and player health)
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +36,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -26,6 +44,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/TeddyToolKit/Test/Core/AttributeTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/BumperMechanic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerMove.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> parent of 3285688 (Scoring and player health)
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -94,11 +116,17 @@
       <updated>1633410247219</updated>
       <workItem from="1633410389273" duration="1649000" />
       <workItem from="1634008432307" duration="6229000" />
+<<<<<<< HEAD
       <workItem from="1634613212664" duration="6460000" />
       <workItem from="1635201759592" duration="13829000" />
       <workItem from="1635395804315" duration="5018000" />
       <workItem from="1635758888686" duration="19994000" />
       <workItem from="1635809582940" duration="310000" />
+=======
+      <workItem from="1634613212664" duration="5778000" />
+      <workItem from="1635209306517" duration="898000" />
+      <workItem from="1635406344607" duration="7358000" />
+>>>>>>> parent of 3285688 (Scoring and player health)
     </task>
     <servers />
   </component>
@@ -107,6 +135,20 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+<<<<<<< HEAD
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+>>>>>>> parent of 3285688 (Scoring and player health)
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
