@@ -71,7 +71,12 @@ namespace NetworkPartyGame.Physics
 
             Debug.Log("should be working");
             // double the speed (might need to fix this later so things don't get TOO fast)
-            ball.GetComponent<Ball>().speed *= 2;
+            // Edit: Now checks for speed so it doesn't get too fast.
+            if(ball.GetComponent<Ball>().speed <= 20)
+            {
+                ball.GetComponent<Ball>().speed *= 1.35f;
+            }
+            
             // Casts a ray in front of the ball towards the object it hits
             // If you can kick and you hit the space key
             if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
