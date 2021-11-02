@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.AnimatedValues;
+//using UnityEditor.AnimatedValues;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,15 +15,45 @@ namespace NetworkPartyGame.Physics
         public GameObject ball;
         // Determines if you can kick
         public bool canKick;
+<<<<<<< HEAD
         // Start is called before the first frame update
         void Start()
         {
+=======
+        // The spot where the balls spawn
+        public GameObject ballSpawnPosition;
+        // The game manager
+        public GameManager GameManager;
+        
+        // Start is called before the first frame update
+        void Start()
+        {
+            
+        }
+
+        private void Awake()
+        {
+            // Todo: Find a way to spawn the ball that doesn't suck
+            ballSpawnPosition = GameObject.Find("Ball Spawn Position");
+            // Doing this is probably BAD
+            GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            // Makes sure it's at the ball transform position when spawned
+            transform.position = ballSpawnPosition.transform.position;
+>>>>>>> parent of 3285688 (Scoring and player health)
             // Picks a random starting direction
             ball.transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
         }
 
         // Update is called once per frame
         void Update()
+<<<<<<< HEAD
+=======
+        {
+
+        }
+
+        private void OnCollisionEnter(Collision collision)
+>>>>>>> parent of 3285688 (Scoring and player health)
         {
             // NOTE: THIS WOULD NOT WORK IN FIXED UPDATE
             //ball.transform.position += ball.transform.forward * speed * Time.deltaTime;
@@ -86,6 +116,18 @@ namespace NetworkPartyGame.Physics
                 // set cankick to true
                 canKick = true;
             }
+<<<<<<< HEAD
+=======
+            // If the ball enters a scorezone
+            if (collider.gameObject.tag == "Scorezone")
+            {
+                // Spawn a new ball and destroy this one
+                // THIS IS ALSO WHERE SCORING WOULD GO
+                // todo: Make the ball store which player last hit it, and which player was scored against
+                GameManager.SpawnBall();
+                Destroy(this.gameObject);
+            }
+>>>>>>> parent of 3285688 (Scoring and player health)
         }
         private void OnTriggerExit(Collider collider)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
@@ -11,7 +12,12 @@ namespace NetworkPartyGame.Physics
         public bool canKick;
 
         [SerializeField] private GameObject kickVisPrefab; // the kick mechanic's visualiser.
+<<<<<<< HEAD:Assets/PartyGame/Scripts/Player/BumperGenerator.cs
         [SerializeField] private Transform playerTran;
+=======
+
+        private GameObject ball;
+>>>>>>> parent of 3285688 (Scoring and player health):Assets/PartyGame/Scripts/Player/Bumper.cs
         void Start()
         {
             //ball = FindObjectOfType<Ball>();
@@ -37,12 +43,8 @@ namespace NetworkPartyGame.Physics
 
 
 
-<<<<<<< HEAD
         
         public void VisualiseKick(Transform _spawnPos)
-=======
-        public void VisualiseKick()
->>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)
         {
             // the reason why we check twice is so that the UI button can only activate it once per click &&when in range of the ball.
             if(canKick)
@@ -53,11 +55,8 @@ namespace NetworkPartyGame.Physics
 
         }
 
-<<<<<<< HEAD
         
 
-=======
->>>>>>> parent of d667a07 (Network player Moves correctly, but no bumper on client)
         private void OnTriggerEnter(Collider collider)
         {
             // If the Kickzone finds a ball
