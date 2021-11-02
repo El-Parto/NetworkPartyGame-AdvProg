@@ -13,9 +13,12 @@ GameObject:
   - component: {fileID: 5440702484923777215}
   - component: {fileID: 6344297275412908644}
   - component: {fileID: 5143823898003832125}
+<<<<<<< HEAD
   - component: {fileID: 4979901641984546252}
   - component: {fileID: 859109521218322059}
   - component: {fileID: -4820036363792688649}
+=======
+>>>>>>> parent of 4500276 (Host now spawns in)
   m_Layer: 0
   m_Name: KickVisualiser
   m_TagString: Bumper
@@ -111,6 +114,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &4979901641984546252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +175,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+=======
+>>>>>>> parent of 4500276 (Host now spawns in)

@@ -96,7 +96,10 @@ GameObject:
   - component: {fileID: 402312446681451339}
   - component: {fileID: 402312446681451351}
   - component: {fileID: -4613004897616043657}
+<<<<<<< HEAD
   - component: {fileID: 6604442561601399996}
+=======
+>>>>>>> parent of 4500276 (Host now spawns in)
   m_Layer: 0
   m_Name: PlayerGO
   m_TagString: Untagged
@@ -165,7 +168,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &402312446681451339
 MonoBehaviour:
@@ -191,7 +194,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402312446681451340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 201711bfd14c2c840a54bb9c5ff541a9, type: 3}
   m_Name: 
@@ -215,6 +218,7 @@ MonoBehaviour:
   visible: 0
   m_AssetId: db9708ec11260c24cadf92582f069048
   hasSpawned: 0
+<<<<<<< HEAD
 --- !u!114 &6604442561601399996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,3 +248,5 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+=======
+>>>>>>> parent of 4500276 (Host now spawns in)
