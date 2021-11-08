@@ -1,12 +1,15 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
-    public class Ball : MonoBehaviour
+    // This script covers the behaviour of the ball.
+    // It is to be added to the NetworkBall script as a Required Component in order to function on the server.
+    public class Ball : NetworkBehaviour
     {
         // Speed of ball
-        public float speed = 10f;
+        [SyncVar]public float speed = 10f;
         // The ball...
         public GameObject ball;
         // Determines if you can kick
@@ -14,23 +17,24 @@ namespace NetworkPartyGame.Physics
         // The spot where the balls spawn
         public GameObject ballSpawnPosition;
         // The game manager
-        public GameManager gameManager;
+        //public GameManager gameManager;
         // The last player to hit the ball
-        public GameObject lastHitPlayer;
+        /*[SyncVar]*/public GameObject lastHitPlayer;
 
         private void Awake()
         {
             // Todo: Find a way to spawn the ball that doesn't suck
             ballSpawnPosition = GameObject.Find("Ball Spawn Position");
             // Doing this is probably BAD
-            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+           // gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             // Makes sure it's at the ball transform position when spawned
             transform.position = ballSpawnPosition.transform.position;
             // Picks a random starting direction
             ball.transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        [ServerCallback]
+        public void OnCollisionEnter(Collision collision)
         {
             // Casts a ray in front of the ball towards the object it hits
             if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
@@ -40,8 +44,40 @@ namespace NetworkPartyGame.Physics
             }
             // ball.transform.rotation = Quaternion.Euler(0, (180 - ball.transform.rotation.y), 0);
             
+            
+            // temporarily added this here to on collision so it works for playtesting
+            // If the ball enters a kickzone
+            if (collision.gameObject.CompareTag("Kickzone"))
+            {
+                // set cankick to true
+                canKick = true;
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collision.gameObject.GetComponent<Bumper>().attachedPlayer;
+            }
+            // If the ball enters a scorezone
+            if (collision.gameObject.CompareTag("Scorezone"))
+            {
+                Destroy(gameObject);
+                if (lastHitPlayer != null)
+                {
+                    // Increases the score of the last player who hit the ball
+                    lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+                }
+                // Deducts health from the player scored against
+                collision.gameObject.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
+                // Spawn a new ball and destroy this one
+                //gameManager.SpawnBall();
+                
+            }
+            if (collision.gameObject.CompareTag("Bumper"))
+            {
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collision.gameObject.GetComponent<Bumper>().attachedPlayer;
+            }
+            
         }
         
+        [ServerCallback]
         void FixedUpdate()
         {
             /*rigidbody.AddForce(ball.transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
@@ -53,36 +89,38 @@ namespace NetworkPartyGame.Physics
 
         }
         
+        [ServerCallback]
         private void OnTriggerEnter(Collider collider)
         {
-            // If the ball enters a kickzone
-            if (collider.gameObject.CompareTag("Kickzone"))
-            {
-                // set cankick to true
-                canKick = true;
-                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
-                lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
-            }
-            // If the ball enters a scorezone
-            if (collider.gameObject.CompareTag("Scorezone"))
-            {
-                if (lastHitPlayer != null)
-                {
-                    // Increases the score of the last player who hit the ball
-                    lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
-                }
-                // Deducts health from the player scored against
-                collider.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
-                // Spawn a new ball and destroy this one
-                gameManager.SpawnBall();
-                Destroy(this.gameObject);
-            }
-            if (collider.gameObject.CompareTag("Bumper"))
-            {
-                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
-                lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
-            }
+            // // If the ball enters a kickzone
+            // if (collider.gameObject.CompareTag("Kickzone"))
+            // {
+            //     // set cankick to true
+            //     canKick = true;
+            //     // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+            //     lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
+            // }
+            // // If the ball enters a scorezone
+            // if (collider.gameObject.CompareTag("Scorezone"))
+            // {
+            //     if (lastHitPlayer != null)
+            //     {
+            //         // Increases the score of the last player who hit the ball
+            //         lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+            //     }
+            //     // Deducts health from the player scored against
+            //     collider.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
+            //     // Spawn a new ball and destroy this one
+            //     //gameManager.SpawnBall();
+            //     Destroy(this.gameObject);
+            // }
+            // if (collider.gameObject.CompareTag("Bumper"))
+            // {
+            //     // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+            //     lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
+            // }
         }
+        [ServerCallback]
         private void OnTriggerExit(Collider collider)
         {
             // if the ball exits the kickzone
@@ -92,5 +130,7 @@ namespace NetworkPartyGame.Physics
                 canKick = false;
             }
         }
+        
+
     }
 }

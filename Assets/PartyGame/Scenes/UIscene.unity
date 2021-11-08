@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
-  PersistNetworkManagerToOfflineScene: 0
+  PersistNetworkManagerToOfflineScene: 1
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
@@ -1990,14 +1990,16 @@ MonoBehaviour:
   onlineScene: Assets/PartyGame/Scenes/Online.unity
   transport: {fileID: 1725728600}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 2704173808737384161, guid: ed323036ec0f4c143b796885217299a3, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
+  - {fileID: 7317452690663803401, guid: d6ae5d492ae73ee4b97527d91348bd39, type: 3}
 --- !u!114 &1725728602
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,6 @@ using Mirror;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-
     [SerializeField] private Button moveLeft;
     [SerializeField] private Button moveRight;
     private bool isMovingLeft = false;
@@ -36,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         if(isMovingLeft || Input.GetKey(KeyCode.A))
             if (movementDistance > movementBounds * -1)
             {
-                playerChildPrefab.transform.position += (Vector3.left * moveSpeed )* Time.deltaTime;
+                playerChildPrefab.transform.Translate((Vector3.left * moveSpeed )* Time.deltaTime);  
                 movementDistance -= moveSpeed * Time.deltaTime;
             }
             
@@ -44,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         if(isMovingRight || Input.GetKey(KeyCode.D))
             if (movementDistance < movementBounds)
             {
-                playerChildPrefab.transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
+                playerChildPrefab.transform.Translate((Vector3.right * moveSpeed) * Time.deltaTime);
                 movementDistance += moveSpeed * Time.deltaTime;
             }
             

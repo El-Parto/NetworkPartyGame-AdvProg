@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704173808161945013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7}
+  m_LocalScale: {x: 0.61702, y: 0.61702, z: 0.61702}
   m_Children:
   - {fileID: 2704173808223517286}
   m_Father: {fileID: 2704173808737384162}
@@ -110,7 +110,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
@@ -238,8 +238,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704173808553670277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.386183, y: 1, z: 1}
+  m_LocalPosition: {x: 0.32, y: 0, z: -1.5}
+  m_LocalScale: {x: 21.202946, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2704173808737384162}
   m_RootOrder: 1
@@ -301,7 +301,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2704173808553670277}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b662d83bfc7884c47a43cfaaceb18adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7.53
+  moveSpeed: 10.19
   moveLeft: {fileID: 0}
   moveRight: {fileID: 0}
   playerChildPrefab: {fileID: 2704173808161945013}
@@ -448,6 +448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  bumper: {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
+  kickZone: {fileID: 2704173808874763432}
 --- !u!114 &4975506004755062262
 MonoBehaviour:
   m_ObjectHideFlags: 0

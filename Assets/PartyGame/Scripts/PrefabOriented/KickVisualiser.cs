@@ -19,9 +19,11 @@ public class KickVisualiser : MonoBehaviour
 
     private IEnumerator VisualiseKick()
     {
-        gameObject.transform.localScale += new Vector3(6.5f, 0, 6.5f) * Time.deltaTime;
+        gameObject.transform.localScale += new Vector3(3.5f, 0, 4.5f) * Time.deltaTime;
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
 
     }
+    
+    
 }
