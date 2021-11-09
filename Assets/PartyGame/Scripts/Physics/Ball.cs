@@ -69,11 +69,11 @@ namespace NetworkPartyGame.Physics
                 //gameManager.SpawnBall();
                 
             }
-            if (collision.gameObject.CompareTag("Bumper"))
+            /*if (collision.gameObject.CompareTag("Bumper"))
             {
                 // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
                 lastHitPlayer = collision.gameObject.GetComponent<Bumper>().attachedPlayer;
-            }
+            }*/
             
         }
         

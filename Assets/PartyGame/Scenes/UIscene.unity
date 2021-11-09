@@ -2027,7 +2027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf9c39fe49d8c945a7d66cf71246ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 7317452690663803401, guid: d6ae5d492ae73ee4b97527d91348bd39, type: 3}
 --- !u!114 &1725728604
 MonoBehaviour:
   m_ObjectHideFlags: 0

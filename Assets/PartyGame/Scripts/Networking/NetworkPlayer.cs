@@ -12,7 +12,11 @@ public class NetworkPlayer : NetworkBehaviour
     //the prefab being instantiated, in this case, the bumper. We want player to be spawning the bumper.
     [SerializeField] private GameObject bumper;
     [SerializeField] private Transform kickZone; // grabbing the transform for the bumper
+    [SerializeField] private Camera camera;
+    [SerializeField] private Transform cameraSpawnPos;
 
+    
+    
     //[SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
@@ -40,6 +44,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         PlayerManager player = gameObject.GetComponent<PlayerManager>();
         player.enabled = isLocalPlayer;
+        SetCameraPos();
+
     }
 
     //because a mono behaviour cannot spawn objects on the server
@@ -56,11 +62,22 @@ public class NetworkPlayer : NetworkBehaviour
         RpcSpawnBumper(_bumper);
     }
 
+    
     // so that the client sees their own bumper spawning at the right place
     [ClientRpc]
     public void RpcSpawnBumper(GameObject bump)
     {
         bump.transform.SetParent(kickZone,false);
+    }
+    
+    //as we don't need to sync the camera movement, we will set camera rotation based on local player
+    private void SetCameraPos()
+    {
+        camera = FindObjectOfType<Camera>();
+        if(isLocalPlayer)
+        {
+            camera.transform.localRotation = cameraSpawnPos.transform.rotation;
+        }
     }
 
 }
