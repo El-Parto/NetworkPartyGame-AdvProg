@@ -15,8 +15,10 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private Transform cameraSpawnPos;
 
-    
-    
+    [SyncVar] public float cDtimer = 1.2f;
+    [SyncVar] public bool canKick = true;
+
+    [SyncVar] public bool hit = false;
     //[SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
@@ -33,9 +35,48 @@ public class NetworkPlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(canKick)
         {
-            CmdSpawnBumper();
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                CmdSpawnBumper();
+                canKick = false;
+            } 
+        }
+        BumperCooldown();
+    }
+
+    /// <summary>
+    /// THe cooldown timer for the bumper Will check if timer variable is at 0 or below before resetting and changing
+    /// cankick to true.
+    /// </summary>
+    public void BumperCooldown()
+    {
+        // if you have used your bumper thus setting can kick to false
+        if(!canKick)
+        {
+            // also if you have hit something, reduce cooldown by half.
+            if(hit)
+            {
+                cDtimer *= 0.1f;
+                cDtimer -= 1 * Time.deltaTime;
+                hit = false;
+            }
+            else
+            {
+                cDtimer -= 1 * Time.deltaTime; //otherwise just decrease by one over time.    
+            }
+            
+            Debug.Log($"ready in : {cDtimer.ToString("F0")}");
+
+        }
+
+        // if cooldown timer reaches or goes negatively past 0
+        if(cDtimer <= 0)
+        {
+            canKick = true; // become able to kick again
+            cDtimer = 1.2f; // refresh timer.
+            Debug.Log("You may kick again");
         }
     }
 
@@ -58,7 +99,7 @@ public class NetworkPlayer : NetworkBehaviour
         // you would first need a variable for this to work.
         //Instantiate bumper at kickzone's transform as the parent.
         GameObject _bumper = Instantiate(bumper, kickZone); // We're instantiating the bumper GO, not to be confused with the behaviour of the bumper which is KickVisualiser
-        NetworkServer.Spawn(_bumper);
+        NetworkServer.Spawn(_bumper); // spawn on the server.
         RpcSpawnBumper(_bumper);
     }
 

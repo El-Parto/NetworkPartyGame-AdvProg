@@ -33,6 +33,17 @@ public class NetworkBump : NetworkBehaviour
             Ball ball = collision.gameObject.GetComponent<Ball>();
             if(ball.speed <= 20)
                 ball.speed *= 1.4f;
+            NetworkPlayer player = GetComponentInParent<NetworkPlayer>();
+            player.hit = true; // only want this to happen for the frame it hit
+            RegisterHitOnBall();
+            Debug.Log("hit");
+            
+            
         }
     }
+
+    private void RegisterHitOnBall()
+    { 
+
+    } 
 }

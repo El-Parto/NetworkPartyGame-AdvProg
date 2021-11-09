@@ -23,7 +23,6 @@
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/S2-2021-Networking-main/S2-2021-Networking-main/Assets/Networking Learning/Scripts/Networking/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/NetworkBump.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TheBetterWarGaming/Assets/TheBetterWargaming/Scripts/Player/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -40,11 +39,12 @@
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameMangerSingleton.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkBall.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/NetworkBump.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkBump.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" />
     </changedPaths>
   </component>
@@ -107,7 +107,7 @@
       <workItem from="1635209306517" duration="898000" />
       <workItem from="1635406344607" duration="7358000" />
       <workItem from="1635501014033" duration="1390000" />
-      <workItem from="1636412049922" duration="8027000" />
+      <workItem from="1636412049922" duration="10991000" />
     </task>
     <servers />
   </component>
