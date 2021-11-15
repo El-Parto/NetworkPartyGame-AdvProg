@@ -294,7 +294,8 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 7317452690663803401, guid: d6ae5d492ae73ee4b97527d91348bd39, type: 3}
   - {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
-  networkDiscovery: {fileID: 0}
+  myNetworkDiscovery: {fileID: 0}
+  MyUiManager: {fileID: 0}
 --- !u!1 &1725728599
 GameObject:
   m_ObjectHideFlags: 0

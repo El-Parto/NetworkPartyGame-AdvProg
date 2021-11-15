@@ -188,6 +188,9 @@ namespace PartyGame.Scripts
             //myNetworkDiscovery = MyNetworkManager.Instance.GetComponent<MyNetworkDiscovery>();
             MyNetworkManager.Instance.myNetworkDiscovery = myNetworkDiscovery;
             myNetworkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
+            //setting the ui manager here strangely will make sure the scene has been loaded and can be used.
+            //this ui manager is always null when loaded in the networkplayer.addplayer
+            MyNetworkManager.Instance.MyUiManager = GameManager.Instance.MyUiManager;
             Debug.Log($"register listener networkDiscovery {myNetworkDiscovery} {myNetworkDiscovery.OnServerFound}");
             btnStartHost.onClick.AddListener(ButtonStartHost);
             btnStartServer.onClick.AddListener(ButtonStartServer);

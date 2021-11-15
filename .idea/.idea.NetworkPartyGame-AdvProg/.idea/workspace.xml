@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="split ui to its own scene. now uses offline to start and goes to online scene.&#10;discovery breaks, added manual connection">
+    <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui">
+      <change afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkSceneManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkSceneManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/GUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/GUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/Offline.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/Offline.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/ConnectionMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/ConnectionMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/UiManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/UiManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,30 +32,37 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EntityVisibility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/GUI.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Player/PlayerManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/UIscene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Runtime/Playables/PrefabControlPlayable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/MenuOption.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkBall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.20/UnityEditor.TestRunner/TestRun/Tasks/SaveModiedSceneTask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CoroutineWorksIfUIObjectIsAttached.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CanvasSizeCorrectInAwakeAndStart.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/ButtonConnect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/CanvasRenderer/ChangingHierarchyOfCanvasRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Physics/Ball.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EntityVisibility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Player/PlayerManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/State/WindowState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/UIscene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Runtime/Playables/PrefabControlPlayable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/MenuOption.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkBall.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkDiscovery.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.20/UnityEditor.TestRunner/TestRun/Tasks/SaveModiedSceneTask.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4a43b17941d49159984b715d63f1a9028000/07/9e4331c3/GUIUtility.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CoroutineWorksIfUIObjectIsAttached.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Prefabs/Player.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/Raycasters/PhysicsRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/Online.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -128,7 +138,7 @@
       <workItem from="1635201759592" duration="8683000" />
       <workItem from="1635809117885" duration="613000" />
       <workItem from="1635813859676" duration="7801000" />
-      <workItem from="1636959926119" duration="12521000" />
+      <workItem from="1636959926119" duration="22782000" />
     </task>
     <task id="LOCAL-00001" summary="manually merged luc's changes from player branch, using teddy gui. works ok.">
       <created>1636966201049</created>
@@ -144,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636974382016</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui">
+      <created>1636977271427</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636977271427</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +186,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="manually merged luc's changes from player branch, using teddy gui. works ok." />
     <MESSAGE value="split ui to its own scene. now uses offline to start and goes to online scene.&#10;discovery breaks, added manual connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="split ui to its own scene. now uses offline to start and goes to online scene.&#10;discovery breaks, added manual connection" />
+    <MESSAGE value="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui" />
   </component>
 </project>

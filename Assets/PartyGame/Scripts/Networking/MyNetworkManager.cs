@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Scripts;
 using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
@@ -24,9 +25,11 @@ namespace PartyGame.Scripts.Networking
         public bool IsHost { get; private set; }
         
         public MyNetworkDiscovery myNetworkDiscovery;
-
         /// <summary> The dictionary of all connected players using their NetID as the key. </summary>
         private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
+
+        //to make sure the ui manager is accessible by all clients, this is set in the connection menu script
+        public UiManager MyUiManager; 
 
         /// <summary> Attempts to find a player using the passed NetID, this can return null. </summary>
         /// <param name="_id"> The NetID of the player that we are trying to find. </param>
@@ -73,7 +76,7 @@ namespace PartyGame.Scripts.Networking
         {
             if (myNetworkDiscovery == null)
             {
-                Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
+                //Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
                 //mynetworkdiscovery moved to connection menu listeners
             }
             base.OnValidate();

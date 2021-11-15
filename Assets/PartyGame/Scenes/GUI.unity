@@ -2004,19 +2004,19 @@ MonoBehaviour:
   - avatar: {fileID: 944629142}
     playerName: {fileID: 726628425}
     hp: {fileID: 1568264490}
-    netId: 1
+    netId: 0
   - avatar: {fileID: 2068319820}
     playerName: {fileID: 210321273}
     hp: {fileID: 64705421}
-    netId: 2
+    netId: 0
   - avatar: {fileID: 707399231}
     playerName: {fileID: 1069543132}
     hp: {fileID: 829584447}
-    netId: 3
+    netId: 0
   - avatar: {fileID: 474097548}
     playerName: {fileID: 1776656191}
     hp: {fileID: 41585183}
-    netId: 4
+    netId: 0
   mainPanelGUI: {fileID: 2258261001240828084}
   topPanel: {fileID: 704076378951914109}
   topTimerBlock: {fileID: 30523880}
