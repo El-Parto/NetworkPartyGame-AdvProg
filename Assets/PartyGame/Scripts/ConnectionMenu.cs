@@ -16,25 +16,38 @@ namespace PartyGame.Scripts
         /// stores the list of discovered server, populated by the
         /// </summary>
         readonly Dictionary<long, ServerResponse> discoveredServers = new Dictionary<long, ServerResponse>();
-        public MyNetworkDiscovery networkDiscovery;
+        public MyNetworkDiscovery myNetworkDiscovery;
+        
+        [Space]
+        [SerializeField] private Button btnStartHost;
+        [SerializeField] private Button btnStartServer;
+        [SerializeField] private Button btnConnectLocalhost;
+        [SerializeField] private Button btnStopServer;
+        [SerializeField] private Button btnStopClient;
+        [SerializeField] private Button btnDiscoverServers;
+        [SerializeField] private Button btnDebug;
         [Tooltip("drag the disabled button template ip inside the scrollview, as a template for new connection buttons")]
-        [Space] [SerializeField] private Button buttonTemplateIP;
+        [SerializeField] private Button buttonTemplateIP;
+        [SerializeField] private InputField txtAddress;
+
         /// <summary>
         /// stores the list of buttons so we can clear it later on refresh
         /// </summary>
         private Dictionary<long, Button> buttonIPs = new Dictionary<long, Button>();
+        
 #if UNITY_EDITOR
         /// <summary>
         /// called only in unity editor scene, not in runtime
         /// </summary>
         void OnValidate()
         {
-            if (networkDiscovery == null)
+            if (myNetworkDiscovery == null)
             {
-                Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
-                networkDiscovery = GetComponent<MyNetworkDiscovery>();
-                UnityEditor.Events.UnityEventTools.AddPersistentListener(networkDiscovery.OnServerFound, OnDiscoveredServer);
-                UnityEditor.Undo.RecordObjects(new Object[] { this, networkDiscovery }, "Set NetworkDiscovery");
+                Debug.Log($"Connection Menu Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
+                myNetworkDiscovery = GetComponent<MyNetworkDiscovery>();
+                MyNetworkManager.Instance.myNetworkDiscovery = myNetworkDiscovery;
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(myNetworkDiscovery.OnServerFound, OnDiscoveredServer);
+                UnityEditor.Undo.RecordObjects(new Object[] { this, myNetworkDiscovery }, "Set NetworkDiscovery");
             }
         }
 #endif
@@ -45,10 +58,10 @@ namespace PartyGame.Scripts
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
-            NetworkManager.singleton.StartHost();
+            MyNetworkManager.Instance.StartHost();
             //if scene has changed to online here, so this line below doesn't get executed and server is not advertised
             // so we need to advertise also in the custom network manager OnStartHost
-            networkDiscovery.AdvertiseServer();
+            myNetworkDiscovery.AdvertiseServer();
         }
         
         /// <summary>
@@ -58,10 +71,19 @@ namespace PartyGame.Scripts
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
-            NetworkManager.singleton.StartServer();
+            MyNetworkManager.Instance.StartServer();
             //if scene has changed to online here, so this line below doesn't get executed and server is not advertised
             // so we need to advertise also in the custom network manager OnStartHost
-            networkDiscovery.AdvertiseServer();
+            myNetworkDiscovery.AdvertiseServer();
+        }
+                
+        public void ButtonConnectLocalhost()
+        {
+            Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
+            //make the default value localhost
+            if (txtAddress.text == "") txtAddress.text = "localhost";
+            MyNetworkManager.Instance.networkAddress = txtAddress.text;
+            MyNetworkManager.Instance.StartClient();
         }
         
         /// <summary>
@@ -71,7 +93,7 @@ namespace PartyGame.Scripts
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
-            NetworkManager.singleton.StopHost();
+            MyNetworkManager.Instance.StopHost();
         }
         
         /// <summary>
@@ -81,8 +103,8 @@ namespace PartyGame.Scripts
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
-            NetworkManager.singleton.StopClient();
-            NetworkManager.singleton.OnStartServer();
+            MyNetworkManager.Instance.StopClient();
+            MyNetworkManager.Instance.OnStartServer();
         }
         
         /// <summary>
@@ -92,7 +114,7 @@ namespace PartyGame.Scripts
         {
             Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
             discoveredServers.Clear();
-            networkDiscovery.StartDiscovery();
+            myNetworkDiscovery.StartDiscovery();
         }
         
         public void ButtonDebug()
@@ -136,8 +158,8 @@ namespace PartyGame.Scripts
         
         public void Connect(ServerResponse info)
         {
-            networkDiscovery.StopDiscovery();
-            NetworkManager.singleton.StartClient(info.uri);
+            myNetworkDiscovery.StopDiscovery();
+            MyNetworkManager.Instance.StartClient(info.uri);
         }
 
         public void OnDiscoveredServer(ServerResponse info)
@@ -153,6 +175,27 @@ namespace PartyGame.Scripts
         {
             //automatically start to discover servers
             ButtonDiscoverServers();
+        }
+
+        private void OnEnable()
+        {
+            Debug.Log($"Called {System.Reflection.MethodBase.GetCurrentMethod().Name}");
+            RegisterListeners();
+        }
+
+        private void RegisterListeners()
+        {
+            //myNetworkDiscovery = MyNetworkManager.Instance.GetComponent<MyNetworkDiscovery>();
+            MyNetworkManager.Instance.myNetworkDiscovery = myNetworkDiscovery;
+            myNetworkDiscovery.OnServerFound.AddListener(OnDiscoveredServer);
+            Debug.Log($"register listener networkDiscovery {myNetworkDiscovery} {myNetworkDiscovery.OnServerFound}");
+            btnStartHost.onClick.AddListener(ButtonStartHost);
+            btnStartServer.onClick.AddListener(ButtonStartServer);
+            btnConnectLocalhost.onClick.AddListener(ButtonConnectLocalhost);
+            btnStopServer.onClick.AddListener(ButtonStopServer);
+            btnStopClient.onClick.AddListener(ButtonStopClient);
+            btnDiscoverServers.onClick.AddListener(ButtonDiscoverServers);
+            btnDebug.onClick.AddListener(ButtonDebug);
         }
 
         // Update is called once per frame

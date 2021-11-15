@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mirror;
+using PartyGame.Scripts;
+using PartyGame.Scripts.Networking;
 using TeddyToolKit.Core;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Scripts
@@ -30,7 +33,11 @@ namespace Game.Scripts
         /// </summary>
         [SerializeField] 
         [Tooltip("Drag the Menu GUI GameObject here for the UIManager to manage")]
-        private GameObject menuGUI;
+        private GameObject mainPanelGUI;
+        [SerializeField]
+        private GameObject topPanel;
+        [SerializeField]
+        private GameObject topTimerBlock;
         
         /// <summary>
         /// toggles the display of menu
@@ -48,10 +55,26 @@ namespace Game.Scripts
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                ToggleMenu(menuGUI);
+                ToggleMenu(mainPanelGUI);
             }
         }
 
+        private void Start()
+        {
+            var sceneName = SceneManager.GetActiveScene().name;
+            switch (sceneName)
+            {
+                case GameManager.OFFLINE_SCENE:
+                    OnStartOffline();
+                    break;
+                case GameManager.ONLINE_SCENE:
+                    OnStartOnline();
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         private void Update()
         {
             UIKeyPress();
@@ -60,7 +83,7 @@ namespace Game.Scripts
 
         private void NetworkStatus()
         {
-            txtNetworkStatus.text = NetworkManager.singleton.mode.ToString();
+            txtNetworkStatus.text = MyNetworkManager.Instance.mode.ToString();
         }
 
         private void OnEnable()
@@ -73,6 +96,28 @@ namespace Game.Scripts
             DeregisterListeners();
         }
 
+        /// <summary>
+        /// set up the gui layout to show what is necessary for online mode after logging in
+        /// main menu off, bottom bar on, to bar on
+        /// </summary>
+        public void OnStartOnline()
+        {
+            topPanel.SetActive(true);
+            topTimerBlock.SetActive(true);
+            mainPanelGUI.SetActive(false);
+        }
+
+        /// <summary>
+        /// set up the gui layout to show what is necessary for online mode after starting a game
+        /// main menu off, bottom bar on with players, to bar on, timer on
+        /// </summary>
+        public void OnStartOffline()
+        {
+            topPanel.SetActive(true);
+            topTimerBlock.SetActive(false);
+            mainPanelGUI.SetActive(true);
+        }
+        
         #region events related
 
         /// <summary>

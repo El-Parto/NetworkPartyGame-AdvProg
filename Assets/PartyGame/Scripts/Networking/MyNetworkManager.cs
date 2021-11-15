@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/components/network-manager
@@ -22,7 +23,7 @@ namespace PartyGame.Scripts.Networking
         /// <summary> Whether or not this NetworkManager is the host. </summary>
         public bool IsHost { get; private set; }
         
-        public MyNetworkDiscovery networkDiscovery;
+        public MyNetworkDiscovery myNetworkDiscovery;
 
         /// <summary> The dictionary of all connected players using their NetID as the key. </summary>
         private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
@@ -70,10 +71,10 @@ namespace PartyGame.Scripts.Networking
 
         public override void OnValidate()
         {
-            if (networkDiscovery == null)
+            if (myNetworkDiscovery == null)
             {
                 Debug.Log($"Clicked {System.Reflection.MethodBase.GetCurrentMethod().Name}");
-                networkDiscovery = GetComponent<MyNetworkDiscovery>();
+                //mynetworkdiscovery moved to connection menu listeners
             }
             base.OnValidate();
         }
@@ -93,6 +94,7 @@ namespace PartyGame.Scripts.Networking
         /// </summary>
         public override void Start()
         {
+            Debug.Log("network manager start");
             base.Start();
         }
 
@@ -289,7 +291,7 @@ namespace PartyGame.Scripts.Networking
         /// </summary>
         public override void OnStartServer()
         {
-            networkDiscovery.AdvertiseServer();
+            myNetworkDiscovery.AdvertiseServer();
         }
 
         /// <summary>
