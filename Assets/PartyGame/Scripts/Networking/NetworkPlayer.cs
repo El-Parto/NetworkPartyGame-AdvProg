@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts;
 using UnityEngine;
 using Mirror;
 
@@ -19,6 +20,10 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar] public bool canKick = true;
 
     [SyncVar] public bool hit = false;
+    [SyncVar] public int playerScore;
+    // The player's health
+    [SyncVar (hook = nameof(CmdUpdatePlayerHealth))] public int playerHealth;
+
     //[SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
@@ -109,6 +114,26 @@ public class NetworkPlayer : NetworkBehaviour
     public void RpcSpawnBumper(GameObject bump)
     {
         bump.transform.SetParent(kickZone,false);
+    }
+
+    [Command]
+    public void CmdUpdatePlayerHealth(int oldValue, int newValue)
+    {
+        playerHealth = newValue;
+        RpcUpdateGUIhealth(netId, playerHealth);
+    }
+
+    [ClientRpc]
+    private void RpcUpdateGUIhealth(uint key, int newValue)
+    {
+        foreach (PlayerGUIRendering render in UiManager.Instance.renders)
+        {
+            if (render.netId == key)
+            {
+                Debug.Log($"in update gui render {render.avatar.name} for {key} value is {newValue}");
+                render.hp.text = newValue.ToString("0000");
+            }
+        }
     }
     
     //as we don't need to sync the camera movement, we will set camera rotation based on local player

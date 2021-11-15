@@ -11,6 +11,23 @@ using UnityEngine.UI;
 
 namespace Game.Scripts
 {
+    /// <summary>
+    /// used to update the values on the gui
+    /// </summary>
+    [Serializable]
+    public class PlayerGUIRendering
+    {
+        public Image avatar;
+        public Text playerName;
+        public Text hp;
+
+        /// <summary>
+        /// used to check if this netid/player id is the same
+        /// may not work if we have players disconnecting and reconnecting? as the index here is hard coded on inspector
+        /// </summary>
+        public uint netId;
+    }
+
     public class UiManager : MonoSingleton<UiManager>
     {
         [Tooltip("the Text UI element for Timer")]
@@ -26,6 +43,10 @@ namespace Game.Scripts
         [Tooltip("the body for each tab")]
         [SerializeField]
         private List<GameObject> tabBody;
+        
+        [Space]
+        [SerializeField] public List<PlayerGUIRendering> renders = new List<PlayerGUIRendering>(4);
+
         private int activeTabIndex; 
         
         /// <summary>

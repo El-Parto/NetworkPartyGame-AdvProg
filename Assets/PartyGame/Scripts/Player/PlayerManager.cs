@@ -18,9 +18,6 @@ public class PlayerManager : MonoBehaviour
     // How far the player has moved from the start point
     [SerializeField] private float movementDistance;
     // The player's score (I think it has to be public because other scripts are accessing it)
-    public int playerScore;
-    // The player's health
-    public int playerHealth;
     
     // Start is called before the first frame update
     void Start()
