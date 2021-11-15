@@ -120,9 +120,9 @@ namespace PartyGame.Scripts.Networking
         /// Set the frame rate for a headless server.
         /// <para>Override if you wish to disable the behavior or set your own tick rate.</para>
         /// </summary>
-        public override void ConfigureServerFrameRate()
+        public override void ConfigureHeadlessFrameRate()
         {
-            base.ConfigureServerFrameRate();
+            base.ConfigureHeadlessFrameRate();
         }
 
         /// <summary>
