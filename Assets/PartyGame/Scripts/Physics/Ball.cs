@@ -1,45 +1,83 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Mirror;
 
 namespace NetworkPartyGame.Physics
 {
-    public class Ball : MonoBehaviour
+    // This script covers the behaviour of the ball.
+    // It is to be added to the NetworkBall script as a Required Component in order to function on the server.
+    public class Ball : NetworkBehaviour
     {
         // Speed of ball
-        public float speed = 10f;
+        [SyncVar]public float speed = 10f;
         // The ball...
         public GameObject ball;
         // Determines if you can kick
         public bool canKick;
-        // Start is called before the first frame update
-        void Start()
+        // The spot where the balls spawn
+        public GameObject ballSpawnPosition;
+        // The game manager
+        //public GameManager gameManager;
+        // The last player to hit the ball
+        /*[SyncVar]*/public GameObject lastHitPlayer;
+
+        private void Awake()
         {
+            // Todo: Find a way to spawn the ball that doesn't suck
+            ballSpawnPosition = GameObject.Find("Ball Spawn Position");
+            // Doing this is probably BAD
+           // gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+            // Makes sure it's at the ball transform position when spawned
+            transform.position = ballSpawnPosition.transform.position;
             // Picks a random starting direction
             ball.transform.rotation = Quaternion.Euler(0, Random.Range(0,360), 0);
         }
 
-        // Update is called once per frame
-        void Update()
+        [ServerCallback]
+        public void OnCollisionEnter(Collision collision)
         {
-            // NOTE: THIS WOULD NOT WORK IN FIXED UPDATE
-            //ball.transform.position += ball.transform.forward * speed * Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.Space) && canKick)
+            // Casts a ray in front of the ball towards the object it hits
+            if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
             {
-                Debug.Log("should be working");
-                // double the speed (might need to fix this later so things don't get TOO fast)
-                speed *= 2;
-                // Casts a ray in front of the ball towards the object it hits
-                // If you can kick and you hit the space key
-                if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
-                {
-                    // Reflects the ball to go the other way
-                    ball.transform.forward = Vector3.Reflect(ball.transform.forward, hit.normal);
-                }
-                // Sets cankick to false so you can't mash space to get infinite speed
-                canKick = false;
+                // Reflects the ball to go the other way
+                ball.transform.forward = Vector3.Reflect(ball.transform.forward, hit.normal);
             }
+            // ball.transform.rotation = Quaternion.Euler(0, (180 - ball.transform.rotation.y), 0);
+            
+            
+            // temporarily added this here to on collision so it works for playtesting
+            // If the ball enters a kickzone
+            if (collision.gameObject.CompareTag("Kickzone"))
+            {
+                // set cankick to true
+                canKick = true;
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collision.gameObject.GetComponent<Bumper>().attachedPlayer;
+            }
+            // If the ball enters a scorezone
+            if (collision.gameObject.CompareTag("Scorezone"))
+            {
+                Destroy(gameObject);
+                if (lastHitPlayer != null)
+                {
+                    // Increases the score of the last player who hit the ball
+                    lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+                }
+                // Deducts health from the player scored against
+                collision.gameObject.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
+                // Spawn a new ball and destroy this one
+                //gameManager.SpawnBall();
+                
+            }
+            /*if (collision.gameObject.CompareTag("Bumper"))
+            {
+                // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+                lastHitPlayer = collision.gameObject.GetComponent<Bumper>().attachedPlayer;
+            }*/
+            
         }
-
+        
+        [ServerCallback]
         void FixedUpdate()
         {
             /*rigidbody.AddForce(ball.transform.forward * speed * Time.deltaTime, ForceMode.Impulse);
@@ -50,47 +88,49 @@ namespace NetworkPartyGame.Physics
             GetComponent<Rigidbody>().MovePosition(ball.transform.position + ball.transform.forward * speed * Time.deltaTime);
 
         }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            // Casts a ray in front of the ball towards the object it hits
-            if (UnityEngine.Physics.Raycast(ball.transform.position, ball.transform.forward, out RaycastHit hit))
-            {
-                // Reflects the ball to go the other way
-                ball.transform.forward = Vector3.Reflect(ball.transform.forward, hit.normal);
-            }
-
-            if(collision.collider.CompareTag("Bumper") && speed <= 19.9f) // if ball speed is below 20
-                speed *= 1.35f; // can multiply it's speed byy a fair amount
-            if(collision.collider.CompareTag("Bumper") && speed >= 20) // if ball speed is above or equal  to 20, multiply by small margin instead
-                speed *= 1.00f;
-
-
-            // When the ball collides with a bumper (might change this later to cover all collisions)
-            /*if (collision.gameObject.tag == "Bumper")
-            {
-                
-                // ball.transform.rotation = Quaternion.Euler(0, (180 - ball.transform.rotation.y), 0);
-            }*/
-        }
-
+        
+        [ServerCallback]
         private void OnTriggerEnter(Collider collider)
         {
-            // If the ball enters a kickzone
-            if (collider.gameObject.tag == "Kickzone")
-            {
-                // set cankick to true
-                canKick = true;
-            }
+            // // If the ball enters a kickzone
+            // if (collider.gameObject.CompareTag("Kickzone"))
+            // {
+            //     // set cankick to true
+            //     canKick = true;
+            //     // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+            //     lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
+            // }
+            // // If the ball enters a scorezone
+            // if (collider.gameObject.CompareTag("Scorezone"))
+            // {
+            //     if (lastHitPlayer != null)
+            //     {
+            //         // Increases the score of the last player who hit the ball
+            //         lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+            //     }
+            //     // Deducts health from the player scored against
+            //     collider.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
+            //     // Spawn a new ball and destroy this one
+            //     //gameManager.SpawnBall();
+            //     Destroy(this.gameObject);
+            // }
+            // if (collider.gameObject.CompareTag("Bumper"))
+            // {
+            //     // Sets lastHitPlayer to the player who last hit the ball (used for scoring)
+            //     lastHitPlayer = collider.GetComponent<Bumper>().attachedPlayer;
+            // }
         }
+        [ServerCallback]
         private void OnTriggerExit(Collider collider)
         {
             // if the ball exits the kickzone
-            if (collider.gameObject.tag == "Kickzone")
+            if (collider.gameObject.CompareTag("Kickzone"))
             {
                 // set cankick to false
                 canKick = false;
             }
         }
+        
+
     }
 }

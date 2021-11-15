@@ -32,14 +32,16 @@ namespace NetworkPartyGame.Physics
             }
         }
 
-
-
+        
         private void VisualiseKick()
         { 
             Instantiate(kickVisPrefab, gameObject.transform); // instantiates the visualiser prefab
             canKick = false; // another setter for the can kick flag
 
         }
+        
+        // Because The Unity event functions such as onTrigger enter seems to not be able to work on the server
+        // it was moved to 
 
         private void OnTriggerEnter(Collider collider)
         {
