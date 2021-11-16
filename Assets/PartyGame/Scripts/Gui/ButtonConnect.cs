@@ -1,5 +1,4 @@
 using Mirror;
-using PartyGame.Scripts.Networking;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,8 +21,8 @@ namespace Game.Scripts
         {
             if (_text)
             {
-                MyNetworkManager.Instance.networkAddress = _text.text;
-                MyNetworkManager.Instance.StartClient();
+                NetworkManager.singleton.networkAddress = _text.text;
+                NetworkManager.singleton.StartClient();
             }
         }
     
