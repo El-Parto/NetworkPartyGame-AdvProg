@@ -27,65 +27,15 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar (hook = nameof(CmdUpdatePlayerScore))] public int playerScore;
     // The player's health
     [SyncVar (hook = nameof(CmdUpdatePlayerHealth))] public int playerHealth;
-
-        /// <summary>
-        /// this is to contain the main menu gui, but because this is in a different scene, it will be set in code using the public getter
-        /// </summary>
-        private UiManager _uiManager;
-        /// <summary>
-        /// this is to prevent null on the game object, because unity game object cannot accurately be compared with == null
-        /// until a property is used, and thats why we need the try catch to check the count of renders element
-        /// otherwise for other objects, using the object?.property syntax would be easier.
-        /// </summary>
-        /// <exception cref="NullReferenceException"></exception>
-        public UiManager MyUiManager
-        {
-            get
-            {
-                if (_uiManager != null)
-                {
-                    return _uiManager;
-                }
-                else
-                {
-                    //initialise the GUI
-                    var guiObjects = SceneManager.GetSceneByName(GameManager.GUI_SCENE).GetRootGameObjects();
-                    Debug.Log($"guiObjects to check {guiObjects.Length}");
-                    bool hasGui = false;
-                    foreach (var go in guiObjects)
-                    {
-                        _uiManager = go.GetComponent<UiManager>();
-                        try
-                        {
-                            var testnull = _uiManager.renders.Count;
-                            //if no exception after this line, then all good
-                            hasGui = true;
-                            break;
-                        }
-                        catch (NullReferenceException)
-                        {
-                            continue;
-                        }
-                    }
-
-                    //if after looping but still no gui then fatal error
-                    if (!hasGui)
-                    {
-                        throw new NullReferenceException("need gui to continue, but not found");
-                    }
-
-                    return _uiManager;
-                }
-            }
-        }
-
+    
         //[SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
     private void Start()
     {
         Debug.Log("net player start called");
-        RegisterPlayerInGUI(netId);
+        if (isLocalPlayer)         RegisterPlayerInGUI(netId);
+
     }
     
     // hoping that each player has their own camera view
@@ -150,6 +100,7 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerManager player = gameObject.GetComponent<PlayerManager>();
         player.enabled = isLocalPlayer;
         MyNetworkManager.AddPlayer(this);
+        //RegisterPlayerInGUI(netId);
         SetCameraPos();
         //base.OnStartClient();
     }
@@ -168,15 +119,23 @@ public class NetworkPlayer : NetworkBehaviour
     /// <param name="key"></param>
     private void RegisterPlayerInGUI(uint key)
     {
-        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+        var i = 0;
+//        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+        foreach (PlayerGUIRendering render in FindObjectOfType<UiManager>().renders)
         {
-            if (render.netId == key) return;
+            if (render.netId == key)
+            {
+                Debug.Log($"RegisterPlayerInGUI trying to register the same ID {key}");
+                return;
+            }
             if (render.netId == 0) //0 means empty slot
             {
-                Debug.Log($"registered player {key} in the gui slots");
+                Debug.Log($"registered player {key} in the gui slots {i}");
                 render.netId = key;
                 break;
             }
+
+            i++;
         }
     }
     
@@ -252,7 +211,7 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void RpcUpdateGUIhealth(uint key, int newValue)
     {
-        foreach (PlayerGUIRendering render in MyUiManager.renders)
+        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
         {
             if (render.netId == key)
             {

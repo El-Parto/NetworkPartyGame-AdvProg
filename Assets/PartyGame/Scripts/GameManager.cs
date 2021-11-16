@@ -17,57 +17,6 @@ namespace PartyGame.Scripts
         public const string GUI_SCENE = "GUI";
         
         #endregion
-
-        /// <summary>
-        /// this is to contain the main menu gui, but because this is in a different scene, it will be set in code using the public getter
-        /// </summary>
-        private UiManager _uiManager;
-        /// <summary>
-        /// this is to prevent null on the game object, because unity game object cannot accurately be compared with == null
-        /// until a property is used, and thats why we need the try catch to check the count of renders element
-        /// otherwise for other objects, using the object?.property syntax would be easier.
-        /// </summary>
-        /// <exception cref="NullReferenceException"></exception>
-        public UiManager MyUiManager
-        {
-            get
-            {
-                if (_uiManager != null)
-                {
-                    return _uiManager;
-                }
-                else
-                {
-                    //initialise the GUI
-                    var guiObjects = SceneManager.GetSceneByName(GameManager.GUI_SCENE).GetRootGameObjects();
-                    Debug.Log($"guiObjects to check {guiObjects.Length}");
-                    bool hasGui = false;
-                    foreach (var go in guiObjects)
-                    {
-                        _uiManager = go.GetComponent<UiManager>();
-                        try
-                        {
-                            var testnull = _uiManager.renders.Count;
-                            //if no exception after this line, then all good
-                            hasGui = true;
-                            break;
-                        }
-                        catch (NullReferenceException)
-                        {
-                            continue;
-                        }
-                    }
-
-                    //if after looping but still no gui then fatal error
-                    if (!hasGui)
-                    {
-                        throw new NullReferenceException("need gui to continue, but not found");
-                    }
-
-                    return _uiManager;
-                }
-            }
-        }
         
         #region for c# events
         private void OnEnable()
