@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1259fd4804eda8d41a5ae91c2041869f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedPlayer: {fileID: 0}
+  attachedPlayer: {fileID: 2704173808737384161}
 --- !u!1 &2704173808737384161
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +451,11 @@ MonoBehaviour:
   syncInterval: 0.1
   bumper: {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
   kickZone: {fileID: 2704173808874763432}
+  camera: {fileID: 0}
   cameraSpawnPos: {fileID: 2197600590110445064}
+  cDtimer: 1.2
+  canKick: 1
+  hit: 0
 --- !u!114 &4975506004755062262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +606,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canKick: 0
   kickVisPrefab: {fileID: 5440702484923777210, guid: b1103489deaf8d348b7c9ef59f8440c7, type: 3}
-  attachedPlayer: {fileID: 0}
 --- !u!1 &6897330474347611953
 GameObject:
   m_ObjectHideFlags: 0

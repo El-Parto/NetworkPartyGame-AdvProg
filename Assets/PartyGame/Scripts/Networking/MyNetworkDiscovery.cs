@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Net;
-using UnityEngine;
-using UnityEngine.Events;
 using Mirror;
 using Mirror.Discovery;
+using UnityEngine;
+using UnityEngine.Events;
 
-namespace Game.Scripts
+namespace PartyGame.Scripts.Networking
 {
     /// <summary>
     /// this is the event to fire when a server is found

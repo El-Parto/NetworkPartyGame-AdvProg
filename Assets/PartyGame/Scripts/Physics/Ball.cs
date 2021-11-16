@@ -61,10 +61,10 @@ namespace NetworkPartyGame.Physics
                 if (lastHitPlayer != null)
                 {
                     // Increases the score of the last player who hit the ball
-                    lastHitPlayer.GetComponent<PlayerManager>().playerScore++;
+                    lastHitPlayer.GetComponent<NetworkPlayer>().playerScore++;
                 }
                 // Deducts health from the player scored against
-                collision.gameObject.GetComponent<Scorezone>().attachedPlayer.GetComponent<PlayerManager>().playerHealth--;
+                collision.gameObject.GetComponent<Scorezone>().attachedPlayer.GetComponent<NetworkPlayer>().playerHealth--;
                 // Spawn a new ball and destroy this one
                 //gameManager.SpawnBall();
                 
