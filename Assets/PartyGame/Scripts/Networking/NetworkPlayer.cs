@@ -27,6 +27,15 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar (hook = nameof(CmdUpdatePlayerScore))] public int playerScore;
     // The player's health
     [SyncVar (hook = nameof(CmdUpdatePlayerHealth))] public int playerHealth;
+    [SyncVar (hook = nameof(CmdUpdatePlayerColour))] public Color playerColour;
+    
+    public MeshRenderer rendererPlayer;
+    public MeshRenderer rendererBumper;
+    private Material materialPlayer;
+    private Material materialBumper;
+
+    private bool hasAddedToGui = false;
+    private bool hasChangedColour = false;
     
         //[SerializeField] private Camera mainCamera;
 
@@ -34,7 +43,6 @@ public class NetworkPlayer : NetworkBehaviour
     private void Start()
     {
         Debug.Log("net player start called");
-        if (isLocalPlayer)         RegisterPlayerInGUI(netId);
 
     }
     
@@ -49,13 +57,18 @@ public class NetworkPlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //hacky way to avoid error when the ui is not ready, and keep calling from the update method.
+        RegisterPlayerInGUI(netId);
+        GetPlayerColourFromGUI(netId);
+        
         if(canKick)
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 CmdSpawnBumper();
                 canKick = false;
-            } 
+            }
+
         }
         BumperCooldown();
     }
@@ -100,7 +113,7 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerManager player = gameObject.GetComponent<PlayerManager>();
         player.enabled = isLocalPlayer;
         MyNetworkManager.AddPlayer(this);
-        //RegisterPlayerInGUI(netId);
+        //RegisterPlayerInGUI(netid) should be in the update because of some execution issue, should use sceneloadedevent next time.
         SetCameraPos();
         //base.OnStartClient();
     }
@@ -119,9 +132,16 @@ public class NetworkPlayer : NetworkBehaviour
     /// <param name="key"></param>
     private void RegisterPlayerInGUI(uint key)
     {
+        //hacky way to avoid error when the ui is not ready, and keep calling from the update method.
+        if(MyNetworkManager.Instance.MyUiManager == null)
+            return;
+
+        if (hasAddedToGui)
+            return;
+        
         var i = 0;
-//        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
-        foreach (PlayerGUIRendering render in FindObjectOfType<UiManager>().renders)
+        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+//        foreach (PlayerGUIRendering render in FindObjectOfType<UiManager>().renders)
         {
             if (render.netId == key)
             {
@@ -132,6 +152,8 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 Debug.Log($"registered player {key} in the gui slots {i}");
                 render.netId = key;
+                Debug.Log($"player colour should be from gui {render.avatar.color}");
+                hasAddedToGui = true;
                 break;
             }
 
@@ -217,6 +239,61 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 Debug.Log($"in update gui render {render.avatar.name} for {key} value is {newValue}");
                 render.hp.text = newValue.ToString("0000");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// updates the player health and the update all clients gui
+    /// </summary>
+    /// <param name="oldValue"></param>
+    /// <param name="newValue"></param>
+    //[Command]
+    public void CmdUpdatePlayerColour(Color oldValue, Color newValue)
+    {
+        if(materialPlayer == null)
+            materialPlayer = rendererPlayer.material;
+        if(materialBumper == null)
+            materialBumper = rendererBumper.material;
+
+        materialPlayer.color = newValue;
+        materialBumper.color = newValue;
+        RpcUpdatePlayerColour(netId);
+    }
+
+    /// <summary>
+    /// go through each gui renderer and update the gui for the player with the same net id and gui id
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="newValue"></param>
+    //[ClientRpc]
+    private void RpcUpdatePlayerColour(uint key)
+    {
+        if(materialPlayer == null)
+            materialPlayer = rendererPlayer.material;
+        if(materialBumper == null)
+            materialBumper = rendererBumper.material;
+
+        materialPlayer.color = playerColour;
+        materialBumper.color = playerColour;
+    }
+    
+    private void GetPlayerColourFromGUI(uint key)
+    {
+        //hacky way to avoid error when the ui is not ready, and keep calling from the update method.
+        if(MyNetworkManager.Instance.MyUiManager == null)
+            return;
+
+        if (hasChangedColour)
+            return;
+        
+        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+        {
+            if (render.netId == key)
+            {
+                Debug.Log($"in get player colour gui render {render.avatar.name} for {key} value is {render.avatar.color}");
+                playerColour = render.avatar.color;
+                hasChangedColour = true;
             }
         }
     }

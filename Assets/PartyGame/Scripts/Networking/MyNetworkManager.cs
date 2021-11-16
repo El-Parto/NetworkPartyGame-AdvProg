@@ -50,10 +50,11 @@ namespace PartyGame.Scripts.Networking
                 else
                 {
                     //initialise the GUI
-                    _uiManager = FindObjectOfType<UiManager>();
-                    return _uiManager;
-                    
-                    var guiObjects = SceneManager.GetSceneByName(GameManager.GUI_SCENE).GetRootGameObjects();
+                    //_uiManager = FindObjectOfType<UiManager>();
+                    //return _uiManager;
+
+                    var scene = SceneManager.GetSceneByName(GameManager.GUI_SCENE);
+                    var guiObjects = scene.GetRootGameObjects();
                     Debug.Log($"guiObjects to check {guiObjects.Length}");
                     bool hasGui = false;
                     foreach (var go in guiObjects)

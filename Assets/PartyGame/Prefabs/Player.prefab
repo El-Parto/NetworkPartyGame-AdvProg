@@ -433,8 +433,6 @@ MonoBehaviour:
   playerChildPrefab: {fileID: 2704173808161945013}
   movementBounds: 8
   movementDistance: 0
-  playerScore: 0
-  playerHealth: 0
 --- !u!114 &2483045317610076878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +454,11 @@ MonoBehaviour:
   cDtimer: 1.2
   canKick: 1
   hit: 0
+  playerScore: 0
+  playerHealth: 0
+  playerColour: {r: 0, g: 0, b: 0, a: 0}
+  rendererPlayer: {fileID: 2704173808161945016}
+  rendererBumper: {fileID: 2704173808223517288}
 --- !u!114 &4975506004755062262
 MonoBehaviour:
   m_ObjectHideFlags: 0
