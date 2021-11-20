@@ -24,10 +24,17 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar] public bool canKick = true;
 
     [SyncVar] public bool hit = false;
-    [SyncVar (hook = nameof(CmdUpdatePlayerScore))] public int playerScore;
+    [SyncVar (hook = nameof(OnUpdatePlayerScore))] public int playerScore;
     // The player's health
-    [SyncVar (hook = nameof(CmdUpdatePlayerHealth))] public int playerHealth;
-    [SyncVar (hook = nameof(CmdUpdatePlayerColour))] public Color playerColour;
+    [SyncVar (hook = nameof(OnUpdatePlayerHealth))] public int playerHealth;
+    [SyncVar (hook = nameof(OnUpdatePlayerColour))] public Color playerColour;
+    [SyncVar (hook = nameof(onUpdatePlayerName))] public string playerName;
+    
+    [Header("Game Settings")]
+    [SyncVar(hook = nameof(OnUpdateMaxTime)), SerializeField] private int maxGameTime = 99;
+    [SyncVar(hook = nameof(OnUpdateMaxHP)), SerializeField] private int maxPlayerHP = 30;
+    [SyncVar(hook = nameof(OnUpdateGameModeID)), SerializeField] private int gameModeID = 1;
+    [SyncVar(hook = nameof(OnUpdateMapID)), SerializeField] private int mapID = 1;
     
     public MeshRenderer rendererPlayer;
     public MeshRenderer rendererBumper;
@@ -201,18 +208,36 @@ public class NetworkPlayer : NetworkBehaviour
         bump.transform.SetParent(kickZone,false);
     }
 
+    #region syncvar player score
+    public void OnUpdatePlayerScore(int oldValue, int newValue)
+    {
+        UpdateGUIscore(netId, newValue);
+    }
+
     [Command]
     public void CmdUpdatePlayerScore(int oldValue, int newValue)
     {
-        //does nothing for now
+        RpcUpdateGUIscore(netId, newValue);
     }
 
     [ClientRpc]
     private void RpcUpdateGUIscore(uint key, int newValue)
     {
-        //does nothing for now
+        UpdateGUIscore(netId, newValue);
     }
     
+    private void UpdateGUIscore(uint key, int newValue)
+    {
+        //does nothing for now
+    }
+    #endregion
+    
+    #region syncvar player health
+    public void OnUpdatePlayerHealth(int oldValue, int newValue)
+    {
+        UpdateGUIhealth(netId, newValue);
+    }
+
     /// <summary>
     /// updates the player health and the update all clients gui
     /// </summary>
@@ -221,7 +246,6 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdUpdatePlayerHealth(int oldValue, int newValue)
     {
-        playerHealth = newValue;
         RpcUpdateGUIhealth(netId, playerHealth);
     }
 
@@ -233,6 +257,11 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void RpcUpdateGUIhealth(uint key, int newValue)
     {
+        UpdateGUIhealth(key, newValue);
+    }
+    
+    private void UpdateGUIhealth(uint key, int newValue)
+    {
         foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
         {
             if (render.netId == key)
@@ -242,23 +271,54 @@ public class NetworkPlayer : NetworkBehaviour
             }
         }
     }
+    #endregion
+
+    #region syncvar player name
+    public void onUpdatePlayerName(string oldValue, string newValue)
+    {
+        UpdateGUIplayerName(netId, newValue);
+    }
+
+    [Command]
+    public void CmdUpdatePlayerName(string oldValue, string newValue)
+    {
+        RpcUpdatePlayerName(netId, newValue);
+    }
+
+    [ClientRpc]
+    private void RpcUpdatePlayerName(uint key, string newValue)
+    {
+        UpdateGUIplayerName(key, newValue);
+    }
+
+    private void UpdateGUIplayerName(uint key, string newValue)
+    {
+        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+        {
+            if (render.netId == key)
+            {
+                Debug.Log($"in update gui render {render.avatar.name} for {key} value is {newValue}");
+                render.playerName.text = newValue;
+            }
+        }
+    }
+    #endregion
     
+    #region syncvar player colour
+    public void OnUpdatePlayerColour(Color oldValue, Color newValue)
+    {
+        UpdateGUIplayerColour(netId, newValue);
+    }
+
     /// <summary>
     /// updates the player health and the update all clients gui
     /// </summary>
     /// <param name="oldValue"></param>
     /// <param name="newValue"></param>
-    //[Command]
+    [Command]
     public void CmdUpdatePlayerColour(Color oldValue, Color newValue)
     {
-        if(materialPlayer == null)
-            materialPlayer = rendererPlayer.material;
-        if(materialBumper == null)
-            materialBumper = rendererBumper.material;
-
-        materialPlayer.color = newValue;
-        materialBumper.color = newValue;
-        RpcUpdatePlayerColour(netId);
+        RpcUpdatePlayerColour(netId, newValue);
     }
 
     /// <summary>
@@ -266,8 +326,13 @@ public class NetworkPlayer : NetworkBehaviour
     /// </summary>
     /// <param name="key"></param>
     /// <param name="newValue"></param>
-    //[ClientRpc]
-    private void RpcUpdatePlayerColour(uint key)
+    [ClientRpc]
+    private void RpcUpdatePlayerColour(uint key, Color newValue)
+    {
+        UpdateGUIplayerColour(key, newValue);
+    }
+    
+    private void UpdateGUIplayerColour(uint key, Color newValue)
     {
         if(materialPlayer == null)
             materialPlayer = rendererPlayer.material;
@@ -277,7 +342,117 @@ public class NetworkPlayer : NetworkBehaviour
         materialPlayer.color = playerColour;
         materialBumper.color = playerColour;
     }
+    #endregion
+
+    #region syncvar max time
+    public void OnUpdateMaxTime(int oldValue, int newValue)
+    {
+        UpdateGUIMaxTime(netId, newValue);
+    }
+
+    [Command]
+    public void CmdUpdateMaxTime(int oldValue, int newValue)
+    {
+        RpcUpdateGUIMaxTime(netId, newValue);
+    }
+
+    [ClientRpc]
+    private void RpcUpdateGUIMaxTime(uint key, int newValue)
+    {
+        UpdateGUIMaxTime(netId, newValue);
+    }
     
+    private void UpdateGUIMaxTime(uint key, int newValue)
+    {
+        Debug.Log($"UpdateGUImaxTime netid {netId}");
+        MyNetworkManager.Instance.MyUiManager.sliderMaxTime.value = (float) newValue;
+    }
+    #endregion
+
+    #region syncvar max hp
+    public void OnUpdateMaxHP(int oldValue, int newValue)
+    {
+        UpdateGUIMaxHP(netId, newValue);
+    }
+
+    [Command]
+    public void CmdUpdateMaxHP(int oldValue, int newValue)
+    {
+        RpcUpdateGUIMaxHP(netId, newValue);
+    }
+
+    [ClientRpc]
+    private void RpcUpdateGUIMaxHP(uint key, int newValue)
+    {
+        UpdateGUIMaxHP(netId, newValue);
+    }
+    
+    private void UpdateGUIMaxHP(uint key, int newValue)
+    {
+        Debug.Log($"UpdateGUIMaxHP netid {netId}");
+        MyNetworkManager.Instance.MyUiManager.sliderMaxHP.value = (float) newValue;
+    }
+    #endregion
+
+    #region syncvar game mode id
+    public void OnUpdateGameModeID(int oldValue, int newValue)
+    {
+        UpdateGUIGameModeID(netId, newValue);
+    }
+
+    [Command]
+    public void CmdUpdateGameModeID(int oldValue, int newValue)
+    {
+        RpcUpdateGUIGameModeID(netId, newValue);
+    }
+
+    [ClientRpc]
+    private void RpcUpdateGUIGameModeID(uint key, int newValue)
+    {
+        UpdateGUIGameModeID(netId, newValue);
+    }
+    
+    private void UpdateGUIGameModeID(uint key, int newValue)
+    {
+        Debug.Log($"UpdateGUIGameModeID netid {netId}");
+        if (newValue == 1)
+        {
+            MyNetworkManager.Instance.MyUiManager.toggleGameMode1.isOn = true;
+            MyNetworkManager.Instance.MyUiManager.toggleGameMode2.isOn = false;
+        }
+    }
+    #endregion
+    
+    #region syncvar map id
+    public void OnUpdateMapID(int oldValue, int newValue)
+    {
+        UpdateGUIMapID(netId, newValue);
+    }
+
+    [Command]
+    public void CmdUpdateMapID(int oldValue, int newValue)
+    {
+        RpcUpdateGUIMapID(netId, newValue);
+    }
+
+    [ClientRpc]
+    private void RpcUpdateGUIMapID(uint key, int newValue)
+    {
+        UpdateGUIMapID(netId, newValue);
+    }
+    
+    private void UpdateGUIMapID(uint key, int newValue)
+    {
+        Debug.Log($"UpdateGUIMapID netid {netId}");
+        if (newValue == 1)
+        {
+            MyNetworkManager.Instance.MyUiManager.toggleMap1.isOn = true;
+            MyNetworkManager.Instance.MyUiManager.toggleMap2.isOn = false;
+        }
+    }
+    #endregion
+
+
     private void GetPlayerColourFromGUI(uint key)
     {
         //hacky way to avoid error when the ui is not ready, and keep calling from the update method.
@@ -308,4 +483,40 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    #region syncvar local hooks called from gui
+    public void LocalPlayerColourChanged(Color value)
+    {
+        CmdUpdatePlayerColour(playerColour, value);
+    }
+
+    public void LocalPlayerNameChanged(string value)
+    {
+        CmdUpdatePlayerName(playerName, value);
+    }
+
+    public void LocalMapChanged(int mapID)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LocalGameModeChanged(int gameModeID)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LocalMaxHPChanged(int value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LocalMaxTimeChanged(int value)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LocalGameStart(MatchSetting getMatchSetting)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
 }
