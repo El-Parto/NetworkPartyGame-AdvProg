@@ -1559,7 +1559,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Last Standing Wins
+  m_Text: Crazy Survival Mode
 --- !u!222 &544135235
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4722,7 +4722,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TIme Attack Mode
+  m_Text: Normal Mode
 --- !u!222 &1752848571
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -597,6 +597,15 @@ public class NetworkPlayer : NetworkBehaviour
         playerName = setting.playerName;
         playerColour = setting.playerColour;
         playerHealth = maxPlayerHP;
+        
+        //load selected map here (enable/disable gameobject)
+        //game mode setting here
+        if (gameModeID == 2) 
+        {
+            //crazy game mode, ball spawn rate is much faster, once a second
+            ballTimer.tickInterval = 1;
+        }
+        
         UpdateGUI(netId);
     }
     private void UpdateGUI(uint key)
