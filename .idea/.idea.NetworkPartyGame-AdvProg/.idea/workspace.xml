@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="" />
+    <list default="true" id="b9ec96b1-b447-4adc-ba7a-56f59b0409e5" name="Default Changelist" comment="game and ball timer synced across player, set in the match setting before starting">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NetworkPartyGame-AdvProg/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scenes/GUI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scenes/GUI.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PartyGame/Scripts/UiManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PartyGame/Scripts/UiManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,33 +28,61 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82ec470c913149358ad0c83ad628910c13a000/cc/6105a735/Scene.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/GUI.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Editor/UI/PropertyDrawers/FontDataDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.20/UnityEditor.TestRunner/Api/ExecutionSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UnityProjects/S2-2021-Networking-main/S2-2021-Networking-main/Assets/Networking Learning/Scripts/Networking/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../MobileGame2D/Assets/MobileGame2D/Scripts/PlayerControl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UnityProjects/Networking/Assets/NetworkingLearn/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../TheBetterWarGaming/Assets/TheBetterWargaming/Scripts/Player/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EntityVisibility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Runtime/AssetUpgrade/AnimationTrackUpgrade.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UnityProjects/S2-2021-Networking-main/S2-2021-Networking-main/Assets/Networking Learning/Scripts/Networking/CustomNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Scorezone.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82ec470c913149358ad0c83ad628910c13a000/07/45d0cfa3/InvokableCall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Runtime/Playables/PrefabControlPlayable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/MenuOption.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/GUI.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkBall.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Prefabs/Player.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.20/UnityEditor.TestRunner/TestRun/Tasks/SaveModiedSceneTask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/Window/TimelineWindow_EditorCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Runtime/Core/Math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CoroutineWorksIfUIObjectIsAttached.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/Animation/CurveDataSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.3.9/Tests/Editor/Models/TestHistoryModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CanvasSizeCorrectInAwakeAndStart.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorMeshUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/MyNetworkManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/CanvasRenderer/ChangingHierarchyOfCanvasRenderer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/82ec470c913149358ad0c83ad628910c13a000/9c/f70e9c67/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.5/Editor/State/WindowState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Graphic/RawImageTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Editor/MenuActions/Selection/SelectVertexColor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scenes/Online.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/Timer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/InputModules/StandaloneInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Editor/EventSystem/EventTriggerEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c4a43b17941d49159984b715d63f1a9028000/07/9e4331c3/GUIUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/Raycasters/PhysicsRaycaster.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.probuilder@4.4.0/Runtime/Core/ProBuilderMesh.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Toggle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Documents/uni/tafe/unity/tue advanced/a3/gui/NetworkPartyGame-AdvProg/Assets/PartyGame/Scripts/UiManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Bumper.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/GameMangerSingleton.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/Bumper.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/PlayerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkBall.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/NetworkBump.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" />
       <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/PrefabOriented/KickVisualiser.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkBump.cs" />
-      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Networking/NetworkPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/BumperMechanic.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Physics/Ball.cs" />
+      <option value="$PROJECT_DIR$/Assets/PartyGame/Scripts/Player/BumperGenerator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z4bJ69BwoWJRLyao6XyhH5FIgL" />
@@ -55,19 +92,25 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../UnityBuilds/New Folder\Ballgame.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/build\Ballgame.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Frank\Documents\UnityBuilds\New Folder" />
+      <option name="WORKING_DIRECTORY" value="D:\Documents\uni\tafe\unity\test2\NetworkPartyGame-AdvProg\build" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -82,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6176">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="6176" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -103,12 +146,73 @@
       <updated>1633410247219</updated>
       <workItem from="1633410389273" duration="1649000" />
       <workItem from="1634008432307" duration="6229000" />
-      <workItem from="1634613212664" duration="5778000" />
-      <workItem from="1635209306517" duration="898000" />
-      <workItem from="1635406344607" duration="7358000" />
-      <workItem from="1635501014033" duration="1390000" />
-      <workItem from="1636412049922" duration="10991000" />
+      <workItem from="1634613212664" duration="6460000" />
+      <workItem from="1635201759592" duration="8683000" />
+      <workItem from="1635809117885" duration="613000" />
+      <workItem from="1635813859676" duration="7801000" />
+      <workItem from="1636959926119" duration="22782000" />
+      <workItem from="1637019985038" duration="9440000" />
+      <workItem from="1637106178058" duration="7665000" />
+      <workItem from="1637385880430" duration="19843000" />
+      <workItem from="1637457401371" duration="13547000" />
     </task>
+    <task id="LOCAL-00001" summary="manually merged luc's changes from player branch, using teddy gui. works ok.">
+      <created>1636966201049</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636966201049</updated>
+    </task>
+    <task id="LOCAL-00002" summary="split ui to its own scene. now uses offline to start and goes to online scene.&#10;discovery breaks, added manual connection">
+      <created>1636974382016</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636974382016</updated>
+    </task>
+    <task id="LOCAL-00003" summary="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui">
+      <created>1636977271427</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636977271427</updated>
+    </task>
+    <task id="LOCAL-00004" summary="for james to debug">
+      <created>1637023373255</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637023373255</updated>
+    </task>
+    <task id="LOCAL-00005" summary="workaround using update to get uimanager works. and also update colours">
+      <created>1637029090757</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637029090757</updated>
+    </task>
+    <task id="LOCAL-00006" summary="speed up development process with auto scene loader">
+      <created>1637409311613</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1637409311613</updated>
+    </task>
+    <task id="LOCAL-00007" summary="big changes for gui update match settings, existing logic still works but match setting not yet">
+      <created>1637410361961</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637410361962</updated>
+    </task>
+    <task id="LOCAL-00008" summary="game and ball timer synced across player, set in the match setting before starting">
+      <created>1637466179479</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637466179479</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +234,16 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="manually merged luc's changes from player branch, using teddy gui. works ok." />
+    <MESSAGE value="split ui to its own scene. now uses offline to start and goes to online scene.&#10;discovery breaks, added manual connection" />
+    <MESSAGE value="synced scoring works, but bug in netIDs of the balls making the player have ids more than 1-4 set in the gui" />
+    <MESSAGE value="for james to debug" />
+    <MESSAGE value="workaround using update to get uimanager works. and also update colours" />
+    <MESSAGE value="speed up development process with auto scene loader" />
+    <MESSAGE value="big changes for gui update match settings, existing logic still works but match setting not yet" />
+    <MESSAGE value="game and ball timer synced across player, set in the match setting before starting" />
+    <option name="LAST_COMMIT_MESSAGE" value="game and ball timer synced across player, set in the match setting before starting" />
   </component>
 </project>

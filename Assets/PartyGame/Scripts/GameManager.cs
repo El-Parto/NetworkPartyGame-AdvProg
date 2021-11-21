@@ -1,14 +1,29 @@
+using System;
+using Game.Scripts;
 using TeddyToolKit.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PartyGame.Scripts
 {
     public class GameManager : MonoSingleton<GameManager>
     {
+        #region constant definitions
+
+        public const string MAP1_SCENE = "Map 1";
+        public const string MAP2_SCENE = "Map 2";
+        public const string OFFLINE_SCENE = "Offline";
+        public const string ONLINE_SCENE = "Online";
+        public const string GUI_SCENE = "GUI";
+        
+        #endregion
+        
         #region for c# events
         private void OnEnable()
         {
             RegisterListeners();
+            FlagAsPersistant();
+            LoadLocalScene(GameManager.GUI_SCENE);
         }
 
         private void OnDisable()
@@ -43,6 +58,11 @@ namespace PartyGame.Scripts
 	        Instantiate(ballPrefab);
 	    }
 
+        public void LoadLocalScene(string scenename)
+        {
+            SceneManager.LoadScene(scenename, LoadSceneMode.Additive);
+        }
+
         /// <summary>
         /// what happens when the gameover event occurs
         /// </summary>
@@ -54,13 +74,15 @@ namespace PartyGame.Scripts
         // Start is called before the first frame update
         void Start()
         {
-        
+            // var s = SceneManager.GetSceneByName(GUI_SCENE);
+            // Debug.Log($"start loaded local gui scene with {s.GetRootGameObjects().Length} objects");
+            // //s.GetRootGameObjects()
+            // Debug.Log($"start loaded {MyUiManager.renders.Count}");
         }
 
         // Update is called once per frame
         void Update()
         {
-        
         }
     }
 }
