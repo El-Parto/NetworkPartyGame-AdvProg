@@ -1,5 +1,3 @@
-using Mirror.Examples.Pong;
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
