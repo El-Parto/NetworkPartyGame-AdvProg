@@ -328,7 +328,7 @@ namespace Game.Scripts
         {
             var first = new string[5];
             var second = new string[5];
-            first[0] = "Ample";
+            first[0] = "Bright";
             first[1] = "Suss";
             first[2] = "Clever";
             first[3] = "Dupe";
@@ -336,14 +336,17 @@ namespace Game.Scripts
             second[0] = "Alien";
             second[1] = "Baby";
             second[2] = "Cat";
-            second[3] = "Dog";
+            second[3] = "Star";
             second[4] = "Killer";
             var i = UnityEngine.Random.Range(0, 4);
             var j = UnityEngine.Random.Range(0, 4);
             var value = $"{first[i]}{second[j]}";
+            //make sure it is different from the previous one
+            if (txtPlayerNameSet.text == value) value += "X";
+            txtPlayerNameSet.text = value;
             MyNetworkManager.LocalPlayer.LocalPlayerNameChanged(value);
         }
-        
+
         public void OnButtonRandomColourClicked()
         {
             var first = new Color[3];
@@ -353,6 +356,9 @@ namespace Game.Scripts
             var i = UnityEngine.Random.Range(0, 3);
             var j = UnityEngine.Random.Range(0, 3);
             var value = first[i] + first[j];
+            //make sure it is different from the previous one
+            if (imgPlayerColourSet.color == value) value += Color.gray;
+            imgPlayerColourSet.color = value;
             MyNetworkManager.LocalPlayer.LocalPlayerColourChanged(value);
         }
     }

@@ -172,7 +172,6 @@ public class NetworkPlayer : NetworkBehaviour
         
         var i = 0;
         foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
-//        foreach (PlayerGUIRendering render in FindObjectOfType<UiManager>().renders)
         {
             if (render.netId == key)
             {
@@ -187,9 +186,16 @@ public class NetworkPlayer : NetworkBehaviour
                 hasAddedToGui = true;
                 break;
             }
-
-            i++;
+            i++; //gui slot debugging
         }
+        
+        //set default values
+        playerHealth = maxPlayerHP = 30;
+        maxGameTime = 99;
+        gameModeID = 1;
+        mapID = 1;
+        playerColour = Color.black;
+        playerName = "player x";
     }
     
     /// <summary>
@@ -252,6 +258,7 @@ public class NetworkPlayer : NetworkBehaviour
     private void UpdateGUIscore(uint key, int newValue)
     {
         //does nothing for now
+        playerScore = newValue;
     }
     #endregion
     
@@ -291,6 +298,7 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 Debug.Log($"in update gui render {render.avatar.name} for {key} value is {newValue}");
                 render.hp.text = newValue.ToString("0000");
+                playerHealth = newValue;
             }
         }
     }
@@ -322,6 +330,7 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 Debug.Log($"in update gui render {render.avatar.name} for {key} value is {newValue}");
                 render.playerName.text = newValue;
+                playerName = newValue;
             }
         }
     }
@@ -362,8 +371,18 @@ public class NetworkPlayer : NetworkBehaviour
         if(materialBumper == null)
             materialBumper = rendererBumper.material;
 
-        materialPlayer.color = playerColour;
-        materialBumper.color = playerColour;
+        materialPlayer.color = newValue;
+        materialBumper.color = newValue;
+        
+        foreach (PlayerGUIRendering render in MyNetworkManager.Instance.MyUiManager.renders)
+        {
+            if (render.netId == key)
+            {
+                Debug.Log($"in update player colour gui render {render.avatar.name} for {key} value is {newValue}");
+                render.avatar.color = newValue;
+                playerColour = newValue;
+            }
+        }
     }
     #endregion
 
@@ -391,6 +410,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         Debug.Log($"UpdateGUImaxTime netid {netId}");
         MyNetworkManager.Instance.MyUiManager.sliderMaxTime.value = (float) newValue;
+        maxGameTime = newValue;
     }
     #endregion
 
@@ -416,6 +436,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         Debug.Log($"UpdateGUIMaxHP netid {netId}");
         MyNetworkManager.Instance.MyUiManager.sliderMaxHP.value = (float) newValue;
+        playerHealth = maxPlayerHP = newValue;
     }
     #endregion
 
@@ -444,6 +465,7 @@ public class NetworkPlayer : NetworkBehaviour
         {
             MyNetworkManager.Instance.MyUiManager.toggleGameMode1.isOn = true;
             MyNetworkManager.Instance.MyUiManager.toggleGameMode2.isOn = false;
+            gameModeID = 1;
         }
     }
     #endregion
@@ -473,6 +495,7 @@ public class NetworkPlayer : NetworkBehaviour
         {
             MyNetworkManager.Instance.MyUiManager.toggleMap1.isOn = true;
             MyNetworkManager.Instance.MyUiManager.toggleMap2.isOn = false;
+            mapID = 1;
         }
     }
     #endregion
@@ -541,6 +564,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void LocalGameStart(MatchSetting setting)
     {
+        Debug.Log($"LocalGameStart {netId}");
         if (isLocalPlayer)
         {
             CmdGameStart(setting);
@@ -556,6 +580,15 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdGameStart(MatchSetting setting)
     {
+        Debug.Log($"CmdGameStart {netId}");
+        RpcGameStart(setting);
+        ServerGameStart();
+    }
+
+    [ClientRpc]
+    public void RpcGameStart(MatchSetting setting)
+    {
+        Debug.Log($"RpcGameStart {netId} max hp {setting.maxHP}");
         //update settings
         maxGameTime = setting.maxTime;
         maxPlayerHP = setting.maxHP;
@@ -564,10 +597,8 @@ public class NetworkPlayer : NetworkBehaviour
         playerName = setting.playerName;
         playerColour = setting.playerColour;
         playerHealth = maxPlayerHP;
-        UpdateGUI(1);
-        ServerGameStart();
+        UpdateGUI(netId);
     }
-
     private void UpdateGUI(uint key)
     {
         UpdateGUIhealth(key, playerHealth);
@@ -616,6 +647,7 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdTimerTick(int value)
     {
         gameTimer = value;
+        UpdateGUI(netId);
     }
         
     [Command]

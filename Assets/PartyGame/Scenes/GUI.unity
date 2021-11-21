@@ -2352,7 +2352,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &828502661
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,7 +4880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Close
+  m_Text: Quit
 --- !u!222 &1816285009
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5457,6 +5457,7 @@ MonoBehaviour:
   - {fileID: 2258260999957148379}
   - {fileID: 2258261000915050547}
   - {fileID: 2258261000354031777}
+  - {fileID: 959722743}
   renders:
   - avatar: {fileID: 944629142}
     playerName: {fileID: 726628425}
@@ -8431,7 +8432,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!224 &2258261000612675051
 RectTransform:
   m_ObjectHideFlags: 0
