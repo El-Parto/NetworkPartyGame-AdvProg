@@ -47,7 +47,10 @@ namespace PartyGame.Scripts
             // EventManager.Instance.OnTimerDone -= GameOver;
         }
 	#endregion
-        
+
+        public GameObject map1;
+        public GameObject map2;
+
         //julian added
 	    public GameObject ballPrefab;
 	    /// <summary>

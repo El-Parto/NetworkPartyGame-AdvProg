@@ -612,7 +612,18 @@ public class NetworkPlayer : NetworkBehaviour
         playerColour = setting.playerColour;
         playerHealth = maxPlayerHP;
         
-        //load selected map here (enable/disable gameobject)
+        //load selected map here (move map in/out of the camera view) 
+        if (mapID == 1)
+        {
+            GameObject.Find("Map1").transform.position = new Vector3(0,0,0);
+            GameObject.Find("Map2").transform.position = new Vector3(-100,0,0);
+        }
+        else
+        {
+            GameObject.Find("Map1").transform.position = new Vector3(-100,0,0);
+            GameObject.Find("Map2").transform.position = new Vector3(0,0,0);
+        }
+        
         //game mode setting here
         if (gameModeID == 2) 
         {
