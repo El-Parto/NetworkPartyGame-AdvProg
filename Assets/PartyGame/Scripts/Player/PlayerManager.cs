@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Mirror;
+using TeddyToolKit.Mobile.InputHandler;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     private bool isMovingRight = false;
     [SerializeField] private GameObject playerChildPrefab;
 
+    private Vector2 joystickAxis;
+    
     // How far the player is allowed to move
     public float movementBounds = 8;
     // How far the player has moved from the start point
@@ -29,6 +32,11 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        joystickAxis = MobileInputManager.GetJoystickAxis();
+        //Debug.LogError($"joystick {joystickAxis}");
+        isMovingLeft = joystickAxis.x < 0 ? true : false;
+        isMovingRight = joystickAxis.x > 0 ? true : false;
+        
         if(isMovingLeft || Input.GetKey(KeyCode.A))
             if (movementDistance > movementBounds * -1)
             {

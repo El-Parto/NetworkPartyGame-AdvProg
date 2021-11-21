@@ -9,6 +9,7 @@ using NetworkPartyGame.Physics;
 using PartyGame.Scripts;
 using PartyGame.Scripts.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 [RequireComponent((typeof(PlayerManager)))]
@@ -71,10 +72,15 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
     
+    private Button _buttonKick;
+
     // Start is called before the first frame update
     private void Start()
     {
         Debug.Log("net player start called");
+        _buttonKick = GameObject.Find("Button Kick").GetComponent<Button>();
+        _buttonKick.onClick.AddListener(BumperKick);
+        
     }
     
     // hoping that each player has their own camera view
@@ -96,12 +102,20 @@ public class NetworkPlayer : NetworkBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                CmdSpawnBumper();
-                canKick = false;
+                BumperKick();
             }
 
         }
         BumperCooldown();
+    }
+
+    /// <summary>
+    /// to be called by button kick
+    /// </summary>
+    private void BumperKick()
+    {
+        CmdSpawnBumper();
+        canKick = false;
     }
 
     /// <summary>
