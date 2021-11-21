@@ -29,7 +29,8 @@ public class NetworkPlayer : NetworkBehaviour
     [SyncVar (hook = nameof(OnUpdatePlayerHealth))] public int playerHealth;
     [SyncVar (hook = nameof(OnUpdatePlayerColour))] public Color playerColour;
     [SyncVar (hook = nameof(onUpdatePlayerName))] public string playerName;
-    
+    [SyncVar(hook = nameof(OnTimerTick)), SerializeField] private int gameTimer;
+
     [Header("Game Settings")]
     [SyncVar(hook = nameof(OnUpdateMaxTime)), SerializeField] private int maxGameTime = 99;
     [SyncVar(hook = nameof(OnUpdateMaxHP)), SerializeField] private int maxPlayerHP = 30;
@@ -43,14 +44,37 @@ public class NetworkPlayer : NetworkBehaviour
 
     private bool hasAddedToGui = false;
     private bool hasChangedColour = false;
-    
-        //[SerializeField] private Camera mainCamera;
 
+    private Timer _gameTimerObject;
+    public Timer GameTimerObject
+    {
+        get
+        {
+            if (_gameTimerObject == null)
+            {
+                _gameTimerObject = GetComponent<Timer>();
+            }
+            return _gameTimerObject;
+        }
+    }
+    private Timer _ballTimer;
+    public Timer ballTimer
+    {
+        get
+        {
+            if (_ballTimer == null)
+            {
+                _ballTimer = GameObject.Find("Network Ball Manager").GetComponent<Timer>();
+            }
+
+            return _ballTimer;
+        }
+    }
+    
     // Start is called before the first frame update
     private void Start()
     {
         Debug.Log("net player start called");
-
     }
     
     // hoping that each player has their own camera view
@@ -122,7 +146,7 @@ public class NetworkPlayer : NetworkBehaviour
         MyNetworkManager.AddPlayer(this);
         //RegisterPlayerInGUI(netid) should be in the update because of some execution issue, should use sceneloadedevent next time.
         SetCameraPos();
-        //base.OnStartClient();
+        base.OnStartClient();
     }
     
     public override void OnStopClient()
@@ -199,7 +223,6 @@ public class NetworkPlayer : NetworkBehaviour
         NetworkServer.Spawn(_bumper); // spawn on the server.
         RpcSpawnBumper(_bumper);
     }
-
     
     // so that the client sees their own bumper spawning at the right place
     [ClientRpc]
@@ -347,6 +370,8 @@ public class NetworkPlayer : NetworkBehaviour
     #region syncvar max time
     public void OnUpdateMaxTime(int oldValue, int newValue)
     {
+        GameTimerObject.startingTime = newValue;
+        ballTimer.startingTime = newValue;
         UpdateGUIMaxTime(netId, newValue);
     }
 
@@ -494,29 +519,132 @@ public class NetworkPlayer : NetworkBehaviour
         CmdUpdatePlayerName(playerName, value);
     }
 
-    public void LocalMapChanged(int mapID)
+    public void LocalMapChanged(int value)
     {
-        throw new NotImplementedException();
+        CmdUpdateMapID(mapID, value);
     }
 
-    public void LocalGameModeChanged(int gameModeID)
+    public void LocalGameModeChanged(int value)
     {
-        throw new NotImplementedException();
+        CmdUpdateGameModeID(gameModeID, value);
     }
 
     public void LocalMaxHPChanged(int value)
     {
-        throw new NotImplementedException();
+        CmdUpdateMaxHP(maxPlayerHP, value);
     }
 
     public void LocalMaxTimeChanged(int value)
     {
-        throw new NotImplementedException();
+        CmdUpdateMaxTime(maxGameTime, value);
     }
 
-    public void LocalGameStart(MatchSetting getMatchSetting)
+    public void LocalGameStart(MatchSetting setting)
     {
-        throw new NotImplementedException();
+        if (isLocalPlayer)
+        {
+            CmdGameStart(setting);
+        }
     }
+    #endregion
+
+    #region match game start
+
+    /// <summary>
+    /// do game initialisation here, then start the timers
+    /// </summary>
+    [Command]
+    public void CmdGameStart(MatchSetting setting)
+    {
+        //update settings
+        maxGameTime = setting.maxTime;
+        maxPlayerHP = setting.maxHP;
+        gameModeID = setting.gameModeID;
+        mapID = setting.mapID;
+        playerName = setting.playerName;
+        playerColour = setting.playerColour;
+        playerHealth = maxPlayerHP;
+        UpdateGUI(1);
+        ServerGameStart();
+    }
+
+    private void UpdateGUI(uint key)
+    {
+        UpdateGUIhealth(key, playerHealth);
+        UpdateGUIplayerColour(key, playerColour);
+        UpdateGUIplayerName(key, playerName);
+    }
+
+    [SyncVar(hook = nameof(OnReceivedGameStarted))]
+    public bool gameStarted = false;
+        
+    private void OnReceivedGameStarted(bool _old, bool _new)
+    {
+        // If you want a countdown or some sort of match starting
+        // indicator, replace the contents of this function
+        // with that and then call the Unload
+			
+        if(_new)
+        {
+            GameObject.FindObjectOfType<UiManager>().OnStartGame();
+            CmdTimerStart();
+        }
+    }
+
+    [Command]
+    public void CmdTimerStart()
+    {
+        if (MyNetworkManager.Instance.IsHost)
+        {
+            GameTimerObject.Restart();
+            ballTimer.Restart();
+        }
+    }
+    
+    [Server]
+    public void ServerGameStart()
+    {
+        gameStarted = true;
+    }
+
+    private void OnTimerTick(int oldValue, int newValue)
+    {
+        MyNetworkManager.Instance.MyUiManager.UpdateTimerText(newValue);
+    }
+    
+    [Command]
+    public void CmdTimerTick(int value)
+    {
+        gameTimer = value;
+    }
+        
+    [Command]
+    public void CmdTimerDone()
+    {
+        Debug.Log("GAME OVER");
+        //decides who wins by checking the hp of each player
+        MyNetworkManager.LocalPlayer.ServerGameOver();
+    }
+
+    [Server]
+    public void ServerGameOver()
+    {
+        string summary = "";
+        foreach (var pair in MyNetworkManager.Instance.players)
+        {
+            summary += $"{pair.Value.playerName} remaining HP: {pair.Value.playerHealth}\n";
+        }
+
+        summary += "biggest HP wins!";
+        RpcGameOver(summary);
+    }
+
+    [ClientRpc]
+    public void RpcGameOver(string summmary)
+    {
+        MyNetworkManager.Instance.MyUiManager.OnGameOver();
+        MyNetworkManager.Instance.MyUiManager.textGameOverSummary.text = summmary;
+    }
+
     #endregion
 }

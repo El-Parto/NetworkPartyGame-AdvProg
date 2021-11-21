@@ -10,6 +10,8 @@ namespace Game.Scripts
     /// </summary>
     public class Timer : MonoBehaviour
     {
+        public string name;
+        public bool isOn;
         public float startingTime = 10;
         public int tickInterval = 1;
         public float timeLeft;
@@ -79,7 +81,6 @@ namespace Game.Scripts
         // Start is called before the first frame update
         private void Start()
         {
-            Restart();
         }
 
         // Update is called once per frame
@@ -93,7 +94,8 @@ namespace Game.Scripts
         /// </summary>
         public void CountDown()
         {
-            //check and stop if timer is already over at the beginning
+            //check and stop if timer off, or is already over
+            if (!isOn) return;
             if (_counter <= 0) return;
 
             //minus the time after one frame
@@ -118,6 +120,7 @@ namespace Game.Scripts
         /// </summary>
         public void Restart()
         {
+            isOn = true;
             timeLeft = startingTime;
             _counter = (int)timeLeft;
             //fire event, sending the current counter value;

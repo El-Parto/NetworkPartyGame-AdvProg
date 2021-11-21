@@ -32,7 +32,8 @@ namespace NetworkPartyGame.Networking
 
         private void Update()
         {
-            Timer();
+            //timer is now in a separate script
+            //Timer();
         }
 
         [Server]
@@ -61,7 +62,7 @@ namespace NetworkPartyGame.Networking
         
         
         [Server]
-        public void CmdSpawnBall()
+        private void CmdSpawnBall()
         {
             // Instantiates the ball prefab and spawns it on the server
             GameObject newBall = Instantiate(ball);

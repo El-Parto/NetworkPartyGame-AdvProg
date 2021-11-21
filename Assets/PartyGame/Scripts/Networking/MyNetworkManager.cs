@@ -26,7 +26,7 @@ namespace PartyGame.Scripts.Networking
         
         public MyNetworkDiscovery myNetworkDiscovery;
         /// <summary> The dictionary of all connected players using their NetID as the key. </summary>
-        private readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
+        public readonly Dictionary<uint, NetworkPlayer> players = new Dictionary<uint, NetworkPlayer>();
 
         //to make sure the ui manager is accessible by all clients, this is set in the connection menu script
         /// <summary>

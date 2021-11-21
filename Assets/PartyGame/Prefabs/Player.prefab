@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 4305977879349010505}
   - component: {fileID: 2483045317610076878}
   - component: {fileID: 4975506004755062262}
+  - component: {fileID: 5158852551380985036}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -457,8 +458,15 @@ MonoBehaviour:
   playerScore: 0
   playerHealth: 0
   playerColour: {r: 0, g: 0, b: 0, a: 0}
+  playerName: 
+  gameTimer: 0
+  maxGameTime: 99
+  maxPlayerHP: 30
+  gameModeID: 1
+  mapID: 1
   rendererPlayer: {fileID: 2704173808161945016}
   rendererBumper: {fileID: 2704173808223517288}
+  gameStarted: 0
 --- !u!114 &4975506004755062262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +507,53 @@ MonoBehaviour:
     localRotation: {x: 0, y: 0, z: 0, w: 0}
     localScale: {x: 0, y: 0, z: 0}
     movementSpeed: 0
+--- !u!114 &5158852551380985036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704173808737384161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebb90325d8db3a47bee782bad10e854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: game timer
+  isOn: 0
+  startingTime: 10
+  tickInterval: 1
+  timeLeft: 0
+  timerTickedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2483045317610076878}
+        m_TargetAssemblyTypeName: NetworkPlayer, Assembly-CSharp
+        m_MethodName: CmdTimerTick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  timerDoneEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2483045317610076878}
+        m_TargetAssemblyTypeName: NetworkPlayer, Assembly-CSharp
+        m_MethodName: CmdTimerDone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2704173808874763431
 GameObject:
   m_ObjectHideFlags: 0
