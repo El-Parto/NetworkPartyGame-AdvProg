@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ball spawn
   isOn: 0
-  startingTime: 10
+  startingTime: 99
   tickInterval: 5
   timeLeft: 0
   timerTickedEvent:

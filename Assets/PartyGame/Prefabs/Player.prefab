@@ -521,7 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: game timer
   isOn: 0
-  startingTime: 10
+  startingTime: 99
   tickInterval: 1
   timeLeft: 0
   timerTickedEvent:
